@@ -5,16 +5,16 @@ import type { ThemeConfig } from '~/types'
 
 export const defaultConfig: ThemeConfig = {
   site: {
-    title: '活版印字',
-    subtitle: 'Typography',
-    author: 'Moeyua',
-    description: 'Rediscory the beauty of typography',
-    website: 'https://astro-theme-typography.vercel.app/',
+    title: '回家',
+    subtitle: 'New Blog of Jik1992',
+    author: 'jik1992',
+    description: '阿左的新Blog，五年未扫屋',
+    website: 'https://blog.jik92.com/',
     pageSize: 5,
     socialLinks: [
       {
         name: 'github',
-        href: 'https://github.com/moeyua/astro-theme-typography',
+        href: 'https://github.com/jik92',
       },
       {
         name: 'rss',
@@ -22,12 +22,8 @@ export const defaultConfig: ThemeConfig = {
       },
       {
         name: 'twitter',
-        href: 'https://github.com/moeyua/astro-theme-typography',
-      },
-      {
-        name: 'mastodon',
-        href: 'https://github.com/moeyua/astro-theme-typography',
-      },
+        href: 'https://x.com/Jik1992',
+      }
     ],
     navLinks: [
       {
@@ -49,7 +45,7 @@ export const defaultConfig: ThemeConfig = {
     ],
     categoryMap: [{ name: '胡适', path: 'hu-shi' }],
     footer: [
-      '© %year <a target="_blank" href="%website">%author</a>',
+      '© 2016 - %year <a target="_blank" href="%website">%author</a>',
       'Theme <a target="_blank" href="https://github.com/Moeyua/astro-theme-typography">Typography</a> by <a target="_blank" href="https://moeyua.com">Moeyua</a>',
       'Proudly published with <a target="_blank" href="https://astro.build/">Astro</a>',
     ],
@@ -72,7 +68,7 @@ export const defaultConfig: ThemeConfig = {
     },
   },
   seo: {
-    twitter: '@moeyua13',
+    twitter: '@jik1992',
     meta: [],
     link: [],
   },

@@ -4,7 +4,7 @@ import swup from '@swup/astro'
 import { defineConfig } from 'astro/config'
 import robotsTxt from 'astro-robots-txt'
 import UnoCSS from 'unocss/astro'
-import { themeConfig } from './src/.config'
+import { themeConfig } from '~/.config'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
@@ -48,4 +48,12 @@ export default defineConfig({
       updateBodyClass: true,
     }),
   ],
+  vite: {
+    server: {
+      watch: {
+        // avoiding WSL2 cant to reload it. - https://github.com/vitejs/vite/issues/5878
+        usePolling:true
+      },
+    },
+  },
 })
