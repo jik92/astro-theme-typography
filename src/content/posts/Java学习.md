@@ -1,9 +1,8 @@
 ---
 title: Java Stack 复习
 pubDate: 2024-10-18
-categories:
-  - JAVA
-description: ’ ‘
+categories: [ 'JAVA' ]
+description: ''
 ---
 对 https://www.skjava.com/java-all 大体的方向是认可的，总结做了精简，重新整理下需要的知识点会持续补充更新这个页面。
 
