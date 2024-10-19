@@ -55,7 +55,7 @@ description: ''
 ## 测试集合
 
 * 模型排行 [open_llm_leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
-* BigCodeBench
+* BigCodeBench `实时看最新的本地大模型评分`
     * 模型排行 [BigCodeBench](https://bigcode-bench.github.io/)
     * 测试集合 https://huggingface.co/datasets/bigcode/bigcodebench
 * 样例类目 Knowledge(Multimodal)、Math(Multimodal)、Document、Chart、Scene Text、General Visual QA、Video
