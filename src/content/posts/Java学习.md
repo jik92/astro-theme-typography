@@ -1,14 +1,14 @@
 ---
-title: Java 技术栈学习
+title: Astro Theme Blog New Life
 pubDate: 2024-10-18
-categories: [ 'Java' ]
-description: ''
+categories:
+  - "['生活‘]"
+description: ’ ‘
 ---
 
 对 https://www.skjava.com/java-all 大体的方向是认可的，总结做了精简，重新整理下需要的知识点会持续补充更新这个页面。
 
-<img  src="/public/markmap.svg" class="w-screen h-screen leading-none markmap mm-rafyn9-1"/>
-
+![](../../assets/Pasted%20image%2020241019155836.png)
 ## 计算机基础
 
 - 数据结构与算法
@@ -128,4 +128,3 @@ description: ''
 ## 分布式网关
 
 - Spring Cloud Gateway：高性能API网关组件。
-  `
