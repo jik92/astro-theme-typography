@@ -41,11 +41,19 @@ description: ''
     * Pick 挑出、Exclude 排除、Omit 忽略、NonNullable不可为空
 * [immutability-helper](https://github.com/kolodny/immutability-helper)
     * 不可变集合 ```$push $unshift $set```
-* [lodash](https://lodash.com/) 基础函数库 notEmpty、Collection、cloneDeep
+* [lodash](https://lodash.com/) 基础函数库 notEmpty、Collection、cloneDeep、debounce/throttle
 * [zod](https://github.com/colinhacks/zod) 数据schema校验工具
 * [tslint](https://palantir.github.io/tslint/)
 * [react-responsive](https://github.com/yocontra/react-responsive)响应式检查
 * [commander](https://github.com/tj/commander.js) 命令行参数配置
+* effective code
+    * requestAnimationFrame
+    * add/remove listener
+    * compress、gzip
+    * lazyImageLoaded
+    * Web Workers/Webassembly
+    * lazy import
+    * compress image or use WEBP
 * d.ts 申明
 
 ``` 
@@ -73,12 +81,13 @@ console.log(obj.doSum(10));
 
 #### React18
 
-* 基础生命周期 didMount/didUpdated/didDestroy
-* React.lazy(()=>import())
+* 基础生命周期
+  ![img.png](../../assets/cycle-life.png)
 * [React hooks](https://react.dev/reference/react-dom/hooks)
     * 常用的 useMemo、useState、useContext、useEffect、useCallback
 * [redux](https://github.com/reduxjs/redux) [reselect](https://github.com/reduxjs/reselect) 缓存 redux
 * [memoize-one](https://github.com/alexreardon/memoize-one)
+* [React Fiber 介绍](https://zhuanlan.zhihu.com/p/26027085)
 
 #### SSR
 
