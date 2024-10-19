@@ -47,6 +47,7 @@ export default defineConfig({
             updateHead: true,
             updateBodyClass: true,
         }),
+        robotsTxt()
     ],
     vite: {
         server: {
