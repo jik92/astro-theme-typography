@@ -4,6 +4,11 @@ pubDate: 2015-11-25
 categories: [ 'java' ]
 description: ''
 ---
+# 关于线程安全可见性
+* 共享可见性
+* 不可见
+
+使用 volatile 关键字，保证内存读取，不会走CPU的L1/2等cache读取
 
 # 原子
 
