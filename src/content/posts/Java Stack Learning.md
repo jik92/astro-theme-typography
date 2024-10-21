@@ -1,12 +1,14 @@
 ---
 title: Java Stack 复习
 pubDate: 2024-10-18
-categories: ['JAVA']
+categories: [ 'JAVA' ]
 description: ''
 ---
+
 对 https://www.skjava.com/java-all 大体的方向是认可的，总结做了精简，重新整理下需要的知识点会持续补充更新这个页面。
 
 ![](../../assets/20241019155836.png)
+
 ## 计算机基础
 
 - 数据结构与算法
@@ -117,6 +119,7 @@ description: ''
 
 - Pinpoint：分析分布式系统的平台。
 - Zipkin：分布式追踪系统。
+- Sky-walking 分布式追踪系统
 
 ## 分布式事务
 
