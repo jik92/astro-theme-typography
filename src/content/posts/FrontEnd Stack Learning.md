@@ -316,3 +316,4 @@ package.json
 * 工程相关 pytest、lint、typing
 * 数学库 numpy、pandas
 * UI库 streamlit、qt6
+* 数据校验 typing pydantic
