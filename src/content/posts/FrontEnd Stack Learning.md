@@ -7,7 +7,84 @@ description: ''
 
 ## FED知识内容
 
+### 基础 HTML/CSS
+
+* `<meta name="viewport" content="width=device-width,initial-scale=1" />`
+* SEO
+* heading、p、list、a、from、input、img、table、div
+
+#### CSS
+
+* selector、attribute
+* type、class、id selector
+* image float, clean:left;
+* sizing: 1px 1em 1vw 1% fit-content
+* text: line-height text-align vertical-align, column-count:3
+* pseudo-classes ```:hover :first-child``` pseudo-elements ```::first-line```
+* flexbox
+    * [flex](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) flex-direction flex-align
+      flex-content shark
+    * [grid](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
+
+```css
+.div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+```
+
+* box model: padding margin border
+* display inline: block inline-block inline-flex flex
+* position relative、absolute、fix,sticky,static
+* spacing work-break:break-all white-space:nowrap
+* shadow radio
+* overflow content
+* font-family：sans-serif、serif、monospace；test-font:cursive、fantasy
+
+```css
+.div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+```
+
+* media query
+
+```css
+@media screen and (min-width: 80rem) {
+    .container {
+        margin: 1em 2em;
+    }
+}
+
+```
+
+* modal align
+
+```css
+.div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+```
+
 ### Javascript 相关
+
+#### JS 基础
 
 #### Vite/webpack5 编译
 
@@ -237,6 +314,5 @@ package.json
 
 * 网络RestAPI框架 aiohttp
 * 工程相关 pytest、lint、typing
-* 数学库 numpy
-* UI库 streamlit、qt6
+* 数学库 numpy、pandas
 * UI库 streamlit、qt6
