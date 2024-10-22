@@ -5,29 +5,44 @@ categories: [ 'LLM' ]
 description: ''
 ---
 
+# 应用层
+
 ## 基于Agent RAG的Search工具
 
 * AI工具集 https://ai-bot.cn/
-* 国产问题搜索工具 https://kimi.moonshot.cn/
+* 问题搜索工具 https://kimi.moonshot.cn/
 * 金融问题搜索 https://www.perplexity.ai/
 * Text-Audio 工具 https://d1tools.com/tools/ai-tts/
+* Text-Video 工具 https://runwayml.com/ https://www.midjourney.com/home
 
 ## 生产力工具
 
-* 代码生成
-    * 在线版本，效果挺好 https://v0.dev/
-    * 相对差一点的版本，也能用 https://www.napkins.dev/
+### 代码生成
+
+0. 产品设计
+    * 草图生成Mind https://excalidraw.com/
+1. 原型获取
+    * [canva](https://www.canva.cn/)
+    * [figma](https://www.figma.com/ai/)
+2. 前端代码生成
+    * 效果挺好 https://v0.dev/
+    * 相对差一点，也能用 https://www.napkins.dev/
+3. 逻辑生成
     * cline 代码生成器，vscode插件，能跑通demo，但是很慢。[本地模型](https://ollama.com/search?q=cline)
-* 草图生成Mind https://excalidraw.com/
-* 草图生成UI https://www.figma.com/ai/
-* 模型集合 [huggingface](https://huggingface.co/)，这个网站有个国内镜像 [hf-mirror](https://hf-mirror.com/)
+    * cursor https://www.cursor.com/
+
+# 模型训练
 
 ## 在线LLM模型
 
+模型集合 [huggingface](https://huggingface.co/)，这个网站有个国内镜像 [hf-mirror](https://hf-mirror.com/)
+
 * [OpenRouter](https://openrouter.ai/) 支持多个在线大模型混用，支持openAI的api标准
-* [Deepseek](https://www.deepseek.com/) 便宜量管够的国产模型
+* [Deepseek2.5](https://www.deepseek.com/) 便宜量管够的国产模型
 * Claude 3.5 Sonnet
 * OpenGPT4 Series、DALE3、Whisper
+* Gemini
+* Copilot
 
 ## 本地LLM模型
 
