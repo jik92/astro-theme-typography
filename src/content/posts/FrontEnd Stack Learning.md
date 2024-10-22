@@ -82,9 +82,90 @@ description: ''
 }
 ```
 
+##### Tailwindcss
+
+* [CSS3](https://web.dev/learn/css)
+* [Tailwindcss](https://tailwindcss.com/) 目前支持面非常的广，基础语法写几遍能记住。是CSS3的另一种描述
+
+```
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss": "^3.4.3"
+```
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+tailwind.config.ts
+
+```ts
+import type {Config} from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
+import tailwindcssAnimate from 'tailwindcss-animate';
+
+export default {
+    content: ['./app/**/*.{js,jsx,ts,tsx}', '../ui/components/**/*.{ts,tsx}', '../emligand/**/*.{ts,tsx}'],
+    theme: {
+        container: {
+            center: true,
+            padding: '2rem',
+        },
+        screens: {
+            desktop: '1536px',
+            ...defaultTheme.screens,
+        },
+        fontFamily: {
+            'pack-sans': ['Inter', 'Segoe UI', 'SF Pro', 'sans-serif'],
+            'pack-serif': ['Georgia', ...defaultTheme.fontFamily.serif],
+            'pack-mono': ['Consolas', ...defaultTheme.fontFamily.mono],
+        },
+        extend: {
+            colors: {
+                border: 'hsl(var(--border))',
+            },
+            borderRadius: {
+                lg: `var(--radius)`,
+                md: `calc(var(--radius) - 2px)`,
+                sm: 'calc(var(--radius) - 4px)',
+            },
+            fontFamily: {
+                sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+            },
+            keyframes: {
+                'accordion-down': {
+                    from: {height: '0'},
+                    to: {height: 'var(--radix-accordion-content-height)'},
+                },
+                'accordion-up': {
+                    from: {height: 'var(--radix-accordion-content-height)'},
+                    to: {height: '0'},
+                },
+            },
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out',
+            },
+        },
+    },
+    plugins: [tailwindcssAnimate],
+} satisfies Config;
+
+```
+
+##### CSS3/Tailwindcss UI 框架
+
+* https://github.com/saadeghi/daisyui
+* https://github.com/tailwindlabs/headlessui
+
 ### Javascript 相关
 
 #### JS 基础
+
+* 重要的七大对象：window location document history cookie storage httpRequest
+* ServiceWorker
 
 #### Vite/webpack5 编译
 
@@ -171,79 +252,6 @@ console.log(obj.doSum(10));
 * Remix [component](https://remix.run/docs/en/1.19.2/components)
 * [Next.js](https://nextjs.org/)
 
-#### CSS3/Tailwindcss
-
-* [CSS3](https://web.dev/learn/css)
-* [Tailwindcss](https://tailwindcss.com/) 目前支持面非常的广，基础语法写几遍能记住。是CSS3的另一种描述
-
-```
-    "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7",
-    "tailwindcss": "^3.4.3"
-```
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-tailwind.config.ts
-
-```ts
-import type {Config} from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
-import tailwindcssAnimate from 'tailwindcss-animate';
-
-export default {
-    content: ['./app/**/*.{js,jsx,ts,tsx}', '../ui/components/**/*.{ts,tsx}', '../emligand/**/*.{ts,tsx}'],
-    theme: {
-        container: {
-            center: true,
-            padding: '2rem',
-        },
-        screens: {
-            desktop: '1536px',
-            ...defaultTheme.screens,
-        },
-        fontFamily: {
-            'pack-sans': ['Inter', 'Segoe UI', 'SF Pro', 'sans-serif'],
-            'pack-serif': ['Georgia', ...defaultTheme.fontFamily.serif],
-            'pack-mono': ['Consolas', ...defaultTheme.fontFamily.mono],
-        },
-        extend: {
-            colors: {
-                border: 'hsl(var(--border))',
-            },
-            borderRadius: {
-                lg: `var(--radius)`,
-                md: `calc(var(--radius) - 2px)`,
-                sm: 'calc(var(--radius) - 4px)',
-            },
-            fontFamily: {
-                sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
-            },
-            keyframes: {
-                'accordion-down': {
-                    from: {height: '0'},
-                    to: {height: 'var(--radix-accordion-content-height)'},
-                },
-                'accordion-up': {
-                    from: {height: 'var(--radix-accordion-content-height)'},
-                    to: {height: '0'},
-                },
-            },
-            animation: {
-                'accordion-down': 'accordion-down 0.2s ease-out',
-                'accordion-up': 'accordion-up 0.2s ease-out',
-            },
-        },
-    },
-    plugins: [tailwindcssAnimate],
-} satisfies Config;
-
-```
-
 #### DockerFile
 
 ```dockerfile
@@ -313,7 +321,6 @@ package.json
 ### Python相关
 
 * 网络RestAPI框架 aiohttp
-* 工程相关 pytest、lint、typing
+* 工程相关 pytest、lint、typing、pydantic
 * 数学库 numpy、pandas
 * UI库 streamlit、qt6
-* 数据校验 typing pydantic
