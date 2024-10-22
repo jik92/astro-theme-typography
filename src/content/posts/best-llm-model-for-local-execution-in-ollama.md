@@ -19,15 +19,15 @@ description: ''
 
 ### 代码生成
 
-0. 产品设计
+1. 产品设计
     * 草图生成Mind https://excalidraw.com/
-1. 原型获取
+2. 原型获取
     * [canva](https://www.canva.cn/)
     * [figma](https://www.figma.com/ai/)
-2. 前端代码生成
+3. 前端代码生成
     * 效果挺好 https://v0.dev/
     * 相对差一点，也能用 https://www.napkins.dev/
-3. 逻辑生成
+4. 逻辑生成
     * cline 代码生成器，vscode插件，能跑通demo，但是很慢。[本地模型](https://ollama.com/search?q=cline)
     * cursor https://www.cursor.com/
 
