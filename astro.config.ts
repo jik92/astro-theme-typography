@@ -35,7 +35,13 @@ export default defineConfig({
                 rehypeKatex,
             ],
         }),
-        robotsTxt(),
+        robotsTxt({
+            policy: [
+                {
+                    userAgent: '*',
+                    disallow: '/',
+                }]
+        }),
         sitemap(),
         swup({
             theme: false,
@@ -46,8 +52,7 @@ export default defineConfig({
             smoothScrolling: true,
             updateHead: true,
             updateBodyClass: true,
-        }),
-        robotsTxt()
+        })
     ],
     vite: {
         server: {
