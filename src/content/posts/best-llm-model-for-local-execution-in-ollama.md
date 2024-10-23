@@ -64,6 +64,7 @@ description: ''
     * text-to-image text-to-video
         * Stable Diffusion、ComfyUI
         * Pyramid
+        * [IOPaint](https://github.com/Sanster/IOPaint)
 
 ## 编写Agent
 
