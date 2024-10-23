@@ -271,16 +271,21 @@ explain
 ```
 
 12.如何优化慢SQL
+
 ```markdown
 优化索引，减少扫查询回表，优化本身硬件能力，使用缓存
 ```
+
 13.explain 关键指标
+
 ```markdown
 cost key 
 ```
+
 14.性能监控你都看哪些指标
+
 ```markdown
-cpu idle 温度
+cpu idle usage 温度
 free -m
 io
 network io
@@ -303,36 +308,321 @@ lock
 
 #### 淘特一面
 
-2.synchonrized的原理和升级过程3.ThreadLocal介绍和原理
+2.synchronized 的原理和升级过程
+
+```markdown
+1.字节码 monitorenter/monitorexit 两个指令，常量池也会多出 ACC_SYNCHRONIZED
+2.升级版本 ReentrantLock
+
+```
+
+3.ThreadLocal介绍和原理
+
+```markdown
+线程用的存储空间，做session存储使用，使用完毕要执行remove()操作内存释放
+
+```
+
 4.Spring单例和多例的区别 什么时候创建 什么时候销毁
-5.Spring生命周期
-6.类加载的流程
-7.类加载数据存在哪里 讲讲JVM方法区
+
+```markdown
+# Singleton
+
+Spring容器启动时创建，加载进FactoryManager中，在spring容器关闭后销毁，也可以实现disposableBean销毁, 整个Spring容器中只有一个Bean实例
+
+# Prototype
+
+每次请求会创建一个新的Bean实例，外部代码控制销毁时间
+
+# 其他作用域
+
+Request/Session/Application/WebSocket
+
+```
+
+5.Spring Bean生命周期
+
+```markdown
+@Construct
+Set
+@Destroy
+```
+
+6.类加载的流程,双亲委派
+![img.png](../../assets/loading_cycle_life.png)
+
+```markdown
+loading->validation->prepare memory（method area）->solving->initial
+
+The Java platform uses a delegation model for loading classes. The basic idea is that every class loader has a “parent”
+class loader. When loading a class, a class loader first “delegates” the search for the class to its parent class loader
+before attempting to find the class itself.
+
+双亲委派，Bootstrap->Extension->Application Class Loader，避免重复加载和核心API被篡改
+```
+
+7.类加载数据存在哪里 讲讲JVM Method Area
+https://blog.csdn.net/qq_51628741/article/details/124524828
+![img.png](../../assets/JMM_1.png)
+![img.png](../../assets/JMM_2.png)
+![img.png](../../assets/JMM_3.png)
+
+```markdown
+存储类的位置，目前Metaspace已经使用，减少GC和OOM的影响
+类信息 域信息 方法信息 常量池 Thread信息 StringTable
+
+内部结构
+
+1. 类信息 class interface enum annotation
+2. Field信息 public，private，protected，static，final，volatile，transient
+3. Method信息 方法名称、return、修饰符、字节码、异常表
+4. runtime常量池 
+```
+
 8.分布式锁原理
+
+```markdown
+violate synchronized
+
+```
+
 9.线程池的用途 线程池的流转原理
+https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html
+
+```markdown
+ThreadPoolExecutor 类，利用多线程提高吞吐量
+
+# 线程池有五种状态：
+
+RUNNING：会接收新任务并且会处理队列中的任务
+SHUTDOWN：不会接收新任务并且会处理队列中的任务
+STOP：不会接收新任务并且不会处理队列中的任务，并且会中断在处理的任务（注意：一个任务能不能被中断得看任务本身）
+TIDYING：所有任务都终止了，线程池中也没有线程了，这样线程池的状态就会转为TIDYING，就会调用线程池的terminated()
+TERMINATED：terminated()执行完之后就会转变为TERMINATED
+
+# 这五种状态并不能任意转换，只会有以下几种转换情况：
+
+RUNNING -> SHUTDOWN：手动调用shutdown()触发，或者线程池对象GC时会调用finalize()从而调用shutdown()
+(RUNNING or SHUTDOWN) -> STOP：调用shutdownNow()触发，如果先调shutdown()紧着调shutdownNow()，就会发生SHUTDOWN -> STOP
+SHUTDOWN -> TIDYING：队列为空并且线程池中没有线程时自动转换
+STOP -> TIDYING：线程池中没有线程时自动转换（队列中可能还有任务）
+TIDYING -> TERMINATED：terminated()执行完后就会自动转换
+
+通过 interrupt() 来停止线程
+
+newSingleThreadExecutor 单线程池
+newFixedThreadPool 固定大小的线程池
+newCachedThreadPool 缓存线程池
+newScheduledThreadPool 定时周期性执行
+
+```
 
 #### JD一面
 
-1.数据库锁问题 并发操作 X锁 S锁 间隙锁2.分布式锁实现原理 zk redis实现的优缺点3.线程池内部逻辑 拒绝策略
+1.数据库锁问题，并发操作 X锁 S锁 间隙锁
+
+```markdown
+乐观锁和悲观锁，粒度：表锁、行锁、全局锁
+
+* S锁
+  READ锁，多个事务对于同一数据共享一把锁，都能访问到数据，但是只能读不能修改
+* X锁
+  WRITE锁，排他锁就是不能与其它锁并存，如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据就行读取和修改。排他锁又称为写锁，简称X锁，可以不加锁的查，加锁的查是不可以的。
+```
+
+2.分布式锁实现原理 zk redis实现的优缺点
+
+```markdown
+Raft 和 Paxso， Redis以前是Gosip模式，现在好像也是Raft
+
+```
+
+3.线程池内部逻辑 拒绝策略
+
+```markdown
+* AbortPolicy - 抛出异常，中止任务。抛出拒绝执行 RejectedExecutionException
+  异常信息。线程池默认的拒绝策略。必须处理好抛出的异常，否则会打断当前的执行流程，影响后续的任务执行
+* CallerRunsPolicy -
+  使用调用线程执行任务。当触发拒绝策略，只要线程池没有关闭的话，则使用调用线程直接运行任务。一般并发比较小，性能要求不高，不允许失败。但是，由于调用者自己运行任务，如果任务提交速度过快，可能导致程序阻塞，性能效率上必然的损失较大
+* DiscardPolicy - 直接丢弃，其他啥都没有
+* DiscardOldestPolicy - 丢弃队列最老任务，添加新任务。当触发拒绝策略，只要线程池没有关闭的话，丢弃阻塞队列 workQueue
+  中最老的一个任务，并将新任务加入
+
+```
+
 4.算法题 100个城市不同的权重 按照权重随机如何实现
-5.限流实现原理
+
+```markdown
+一个数据段，然后区间按比例分配，丢随机数或者有序Id取模
+```
+
 7.大量慢SQL如何优化
-8.缓存穿透 缓存击穿 缓存雪崩问题
-9.SQL什么时候不走索引
+
+```markdown
+缺少索引：没有为查询涉及的列创建适当的索引，导致数据库需要全表扫描来找到匹配的行。
+错误使用索引：使用了索引但不符合最左前缀原则，或者索引选择度不高（即索引列的唯一性不够高），导致数据库选择不到最优的索引执行查询。
+查询字段过多：SELECT 语句中涉及的字段过多，增加了数据传输和处理的开销。
+多次回表：查询执行过程中需要多次访问磁盘以获取额外的数据行，例如对主键的索引扫描后，需要再次根据主键进行查询。
+多表连接：涉及多个表的 JOIN 操作，若 JOIN 条件不合适或者 JOIN 操作没有利用到索引，会导致性能下降。
+深度分页：需要返回大量数据中的某一页，但是没有合适的方式来快速定位和获取这一页数据。
+其他因素：还有一些其他可能的原因，例如复杂的子查询、数据库服务器负载高、SQL 语句写法不佳等。
+
+拆分
+```
 
 #### 网易二面
 
 2.redis list
+
+```markdown
+compress list
+skip list
+```
+
 3.es底层如何查询倒排索引什么算法 复杂度
-4.es如何优化
-5.Dubbo spi 实现原理
+
+```markdown
+倒排索引 + TF-IDF打分算法
+用 Lucene 分词Term，然后存储用链表、二分法查询。
+用发Finite State transducer 查询复杂度 O(len(str))
+FST(Trie树)是将单词拆成单个字母存在节点上，每个节点存一个字母，根节点不存，从根节点出发到特定节点所经过的字母就可以组成目标单词
+
+TF-IDF打分 TF*IDF
+```
+
+4.ES如何优化
+
+```markdown
+硬件层面，先把磁盘换成M2，加大内存，谢谢
+
+内核层面 关闭swap，增加内存
+
+-XX:+UseG1GC
+-XX:MaxGCPauseMillis=50
+
+index.refresh_interval=-1 关闭延迟写入（链路日志可以设置为30s）
+indices.memory.index_buffer_size: 10%
+indices.memory.min_index_buffer_size: 48mb
+index.translog.sync_interval: 5s
+index.translog.flush_threshold_size: 512mb
+
+减少副本数量
+查询上尽量用 filter 代替 query
+尽量不要大深度翻页
+multi_match越多越慢，可以copy到一个新字段然后match
+优化 aggregation 性能
+```
+
+5.Dubbo SPI 实现原理
+
+```markdown
+首先Java SPI 是使用 ServiceLoader 加载 `META-INF/services` 的文件
+再看Dubbo SPI 是使用 ExtensionLoader， 预读 `META-INF/dubbo` 下面的内容，更好的支持对同接口的不同实现
+
+线程安全的单列工厂，然后基于反射创造实例，加载资源解析和配置。Dubbo 的IOC基于setter注入依赖
+```
+
 6.Dubbo 整个调用流程
-7.spring加载过程
-8.spring事务的原理
+
+```markdown
+首先服务消费者通过代理对象 Proxy 发起远程调用，接着通过网络客户端 Client 将编码后的请求发送给服务提供方的网络层上，也就是
+Server。Server 在收到请求后，首先要做的事情是对数据包进行解码。然后将解码后的请求发送至分发器
+Dispatcher，再由分发器将请求派发到指定的线程池上，最后由线程池调用具体的服务。这就是一个远程调用请求的发送与接收过程。
+```
+
+7.Spring Bean加载过程
+
+```markdown
+ApplicationContext BeanFactory
+```
+
+8.Spring事务的原理
+
+![](../../assets/transaction.jpeg)
+
+```markdown
+呼起 autocommit=On begin;end; 本身基于AOP实现
+
+## 事务操作相关的API：
+
+Spring事务@Enanle模块驱动 - @EnableTranSactionManagement
+Spring事务注解 - @Transactional
+Spring事务事件监听器 - @TransactionalEventListener
+
+## 事务抽象相关的API
+
+Spring平台事务管理器 - PlatformTransactionManager
+Spring事务定义 - TransactionDefinition
+Spring事务状态 - TransactionStatus
+Spring事务代理配置 - ProxyTransactionManagementConfiguration
+
+## AOP相关的API
+
+Spring事务PointcutAdvisor实现 - BeanFactoryTransactionAttributeSourceAdvisor
+Spring事务MethodInterceptor实现 - TransactionInterceptor
+Spring事务属性源 - TransactionAttributeSource
+其中，PlatformTransactionManager、TransactionDefinition、TransactionStatus最为重要，他们之间的关系如下：
+
+
+```
+
+    @Transactional(rollbackFor=Exception.class)
+
+    @Autowired
+    TransactionTemplate transactionTemplate;
+
+```
+
+```
+
 9.filter interpret aop的执行顺序
-10.aop的原理 动态代理的实现 区别
-11.服务链路如何实现(elk+skywalking)
-12.threadlocal 子线程问题 如何传播13.方法调用 参数传递 按值还是引用
+
+```markdown
+@Order
+Filter 这个获取设置的链路请求 MDC/ThreadLocal
+Interceptor
+AOP @around
+
+```
+
+10.AOP代理 动态代理的实现 区别
+
+```markdown
+CGlib接口 字节码的修改
+DynamicInvoke接口 官方的接口
+```
+
+11.服务链路如何实现(ELK+SkyWalking)
+
+```markdown
+https://skywalking.apache.org/zh/2020-04-19-skywalking-quick-start/
+Dapper 论文
+```
+
+12.ThreadLocal/子线程问题, 如何传播
+
+```markdown
+父子线程通信，当ThreadLocal中数据变动，子线程同步。 会在线程创建时传递 InheritableThreadLocal
+使用方法
+https://github.com/alibaba/transmittable-thread-local
+
+* 分布式跟踪系统（链路追踪）
+* 日志收集记录系统上下文（MDC）
+* Session级Cache
+* 应用容器或上层框架跨应用代码给下层SDK传递信息
+```
+
+13.Java的参数传递是「按值传递」还是「按引用传递」？
+
+```markdown
+1. Java基本数据类型传递参数时是值传递；引用类型传递参数时是引用传递。
+2. 值传递时，将实参的值传递一份给形参；引用传递时，将实参的地址值传递一份给形参
+3.
+
+值传递时，实参把它的值传递给对应的形参，函数接收的是原始值的一个拷贝，此时内存中存在两个相等的基本类型，即实参和形参，后面方法中的操作都是对形参这个值的修改，不影响实参的值。引用传递时，实参的引用(
+地址，而不是参数的值)被传递给方法中相对应的形参，函数接收的是原始值的内存地址；在方法执行中，形参和实参内容相同，指向同一块内存地址，方法执行中对引用的操作将会影响到实际对象。
+4.需要特殊考虑String，以及Integer、Double等几个基本类型包装类，它们都是immutable类型，因为没有提供自身修改的函数，每次操作都是新创建一个对象，所以要特殊对待。因为最后的操作不会修改实参，可以认为是和基本数据类型相似，为值传递。
+```
 
 # 软问题集合
 
