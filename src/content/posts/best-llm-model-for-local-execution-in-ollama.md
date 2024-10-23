@@ -74,6 +74,7 @@ description: ''
     * AutoGPT https://github.com/Significant-Gravitas/AutoGPT
     * Dify 本地开发工具包 [compose启动](https://docs.dify.ai/getting-started/install-self-hosted/docker-compose)
     * [RAGFlow](https://github.com/infiniflow/ragflow)
+    * [Flowise](https://github.com/FlowiseAI/Flowise)
 * Agent Framework:
     * babyAgent https://github.com/yoheinakajima/babyagi
     * [AgentGPT](https://github.com/reworkd/AgentGPT)
