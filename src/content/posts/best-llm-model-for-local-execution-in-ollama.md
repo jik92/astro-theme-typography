@@ -89,7 +89,8 @@ description: ''
 
 * 线性代数（矩阵、向量）、微积分（偏导数、梯度下降）、概率统计（概率分布、期望、方差）
 * 租用算力平台 A100
-* 学习使用 Flux/LoRA 做剪枝
+* [学习pretrain](https://mmpretrain.readthedocs.io/zh-cn/dev/notes/finetune_custom_dataset.html)
+* text to Image 学习使用 Flux/LoRA 做剪枝
 
 ## 测试集合
 
