@@ -7,13 +7,15 @@ description: ''
 
 # 应用层
 
-## 基于Agent RAG的Search工具
+## 基于Agent RAG 的 Search工具
 
 * AI工具集 https://ai-bot.cn/
 * 问题搜索工具 https://kimi.moonshot.cn/
 * 金融问题搜索 https://www.perplexity.ai/
 * Text-Audio 工具 https://d1tools.com/tools/ai-tts/
 * Text-Video 工具 https://runwayml.com/ https://www.midjourney.com/home
+* Prompt 构建集合 https://github.com/linexjlin/GPTs
+* WebUI https://chat-preview.lobehub.com/
 
 ## 生产力工具
 
@@ -27,6 +29,7 @@ description: ''
 3. 前端代码生成
     * 效果挺好 https://v0.dev/
     * 相对差一点，也能用 https://www.napkins.dev/
+    * 本地MIT版本 https://screenshottocode.com/
 4. 逻辑生成
     * cline 代码生成器，vscode插件，能跑通demo，但是很慢。[本地模型](https://ollama.com/search?q=cline)
     * cursor https://www.cursor.com/
@@ -43,6 +46,7 @@ description: ''
 * OpenGPT4 Series、DALE3、Whisper
 * Gemini
 * Copilot
+* Runway、Pika 视频模型
 
 ## 本地LLM模型
 
@@ -65,6 +69,11 @@ description: ''
         * Stable Diffusion、ComfyUI
         * Pyramid
         * [IOPaint](https://github.com/Sanster/IOPaint)
+        * https://github.com/lllyasviel/Fooocus
+    * text-to-voice
+        * https://github.com/myshell-ai/OpenVoice
+        * Whisper
+        * https://github.com/fishaudio/fish-speech/blob/main/docs/README.zh.md
 
 ## 编写Agent
 
