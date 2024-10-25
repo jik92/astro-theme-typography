@@ -13,15 +13,20 @@ description: ''
 
 ## 数据结构
 
-* Tree、Array、List、Queue、Stack、Hash、图
+Tree、Array、List、 、Hash、图
+
+* Array
+* List
+* Queue、Stack
+* 树 红黑树（二叉搜索树）、多叉树、 二叉堆、 图、 Dict Tree、BST（Binary Search Tree）、DFS、BFS
+* 图 Union-Find
 
 ## 算法分类
 
-* 动态规划求最值，三要素：重叠子问题、最优子结构、状态转移方程
-  动态规划本质是穷举所有问题的和，用N叉来看待，带备忘录
+* 动态规划求最值，三要素：重叠子问题、最优子结构、状态转移方程，动态规划本质是穷举所有问题的和，用N叉来看待，带备忘录
     * 背包问题、高楼扔鸡蛋、戳气球、LCS、正则表达、四键键盘
 * 回溯算法，决策树，N皇后问题、DFS、BFS（最小路径）、排列、子集、组合、树独、合法括号
-* 二分法
+* 二分法 左边界二分法、右边界二分法
 * 滑动窗口算法 最小覆盖子串、字符串排列、找到字符串中所有的异位词、无重复字符串最长子串
 * DPTable 股票买卖
 * DPTable + 回溯 编辑距离
@@ -29,7 +34,7 @@ description: ''
 * 贪心算法 局部导致全局最优
 * 二分图
 * 二叉堆 PriorityQueue、Twitter
-* 双向链表+哈希表 LRU
+* 双向链表+哈希表 LRU.，
 * 树 BST、线索树、Tried Tree、LSM-Tree
 * Stack
 * 单调队列 滑动窗口
@@ -48,7 +53,7 @@ description: ''
 ### 未分类算法
 
 * Bloom filter
-* B+
+* MySQL用的 B+
 
 分布式日志 Dapper
 Google三驾马车 GFS MapReduce Bigtable(LevelDB LSM-tree)
