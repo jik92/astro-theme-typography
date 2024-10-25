@@ -71,13 +71,13 @@ Tree、Array、List、 、Hash、图
 
 ### 未分类算法
 
-* Bloom filter
 * MySQL用的 B+
+* 一致性hash
 
 ### Google 算法
 
 * 分布式日志 Dapper
-* 分布式文件 GFS
+* 分布式文件 GFS (Bloom filter)
 * 分布式调度 MapReduce （Hadoop）
 * 分布式数据库 Bigtable(LevelDB LSM-tree)
 
