@@ -71,8 +71,8 @@ Tree、Array、List、 、Hash、图
 
 ### 未分类算法
 
-* MySQL用的 B+
-* 一致性hash
+* MySQL的 B+ 树
+* Redis的 一致性hash
 * CPU多线程运行队列，cfs_rq 红黑树
 
 ### Google 算法
