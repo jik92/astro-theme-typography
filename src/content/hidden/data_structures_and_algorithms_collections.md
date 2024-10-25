@@ -64,7 +64,7 @@ Tree、Array、List、 、Hash、图
 * 排序问题
   信封嵌套问题
 
-### 分布式保证BASE算法
+### 分布式 CAP/BASE 算法
 
 * Raft
 * Paxso ZAB
