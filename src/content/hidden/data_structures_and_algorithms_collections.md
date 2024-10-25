@@ -82,3 +82,6 @@ Tree、Array、List、 、Hash、图
 * 分布式调度 MapReduce （Hadoop）
 * 分布式数据库 Bigtable(LevelDB LSM-tree)
 
+### 权重随机数
+
+https://zhuanlan.zhihu.com/p/534645684
