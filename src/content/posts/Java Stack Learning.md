@@ -1,5 +1,5 @@
 ---
-title: Java Stack 复习
+title: Java Stack 总结
 pubDate: 2024-10-18
 categories: [ 'JAVA' ]
 description: ''

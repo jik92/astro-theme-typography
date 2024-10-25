@@ -1,5 +1,5 @@
 ---
-title: FrontEnd Stack 学习
+title: FrontEnd Stack 总结
 pubDate: 2024-10-20
 categories: [ 'FED' ]
 description: ''
