@@ -78,6 +78,6 @@ Tree、Array、List、 、Hash、图
 
 * 分布式日志 Dapper
 * 分布式文件 GFS
-* 分布式调度 MapReduce（Hadoop）
+* 分布式调度 MapReduce （Hadoop）
 * 分布式数据库 Bigtable(LevelDB LSM-tree)
 
