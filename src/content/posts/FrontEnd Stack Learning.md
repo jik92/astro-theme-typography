@@ -235,10 +235,50 @@ console.log(obj.doSum(10));
 * 基础生命周期
   ![img.png](../../assets/cycle-life.png)
 * [React hooks](https://react.dev/reference/react-dom/hooks)
-    * 常用的 useMemo、useState、useContext、useEffect、useCallback
+    * 常用的 useMemo、useCallback、useState、useContext、useEffect、useCleanup
 * [redux](https://github.com/reduxjs/redux) [reselect](https://github.com/reduxjs/reselect) 缓存 redux
 * [memoize-one](https://github.com/alexreardon/memoize-one)
 * [React Fiber 介绍](https://zhuanlan.zhihu.com/p/26027085)
+    * 新调度算法（纤程），意指在渲染过程中把一次任务拆解多个单元，保证动画帧流畅
+* Error Boundaries 捕获边界错误
+* 组件优化手段
+    * 组件优化
+        * PureComponent、React.memo
+        * useMemo/useCallback 或者 shouldComponentUpdate 来控制是否更新组件
+    * 状态管理
+        * 避免大面积 多频次发生 render
+        * 选择性的更新 state
+    * Virtual Dom /Diff
+        * 保证组件树的扁平化、利用稳定key属性，少用dom层级、多用箭头标签
+    * 事件处理
+        * 合成多个事件监听，避免 inline 函数
+    * 懒加载的代码分割
+        * React.lazy/Suspense
+        * CSS/JS/图片资源加载
+    * 优化渲染过程
+        * 使用 ReactDOM.createPortal 将某些组件渲染到根DOM之外
+        * 使用RequestAnimationFrame 处理复杂动画
+    * 辅助工具
+        * 检查Devtools
+        * 性能监控 sentry
+    * 前端通用优化
+        * http缓存 PWA compress
+        * SSR 支持
+* Redux 高阶组件
+    * 权限控制
+    * 日志记录
+    * 数据校验
+    * 异常处理
+    * 统计上报
+* 组件通信
+    * Context API
+    * Redux
+    * useState/useReducer
+    * MobX
+    * EventBus
+    * windows.event
+    * 回调callback
+* React Route / History
 
 #### SSR
 
