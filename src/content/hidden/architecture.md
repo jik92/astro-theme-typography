@@ -82,7 +82,7 @@ https://github.com/datawhalechina/fun-rec/tree/master
 
 ## 搜索NLP
 
-* 搜索词分词
+* 搜索词分词，编辑距离，LCS
 
 ## 金融P2P
 
