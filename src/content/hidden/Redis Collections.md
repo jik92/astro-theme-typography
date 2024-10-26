@@ -40,7 +40,6 @@ while (true){
   }else{
     if(zrem key,result >0){
       handle()
-      }
     }
   }
 }
