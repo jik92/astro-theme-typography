@@ -31,7 +31,7 @@ kv 数据库， 单线程高并发，支持集群，可以实现队列，事务�
 lpush mq 'topic' 'xxx'
 lpop mq 'topic'
 
-zadd currentTimeMillis() + 5000
+zadd currentTimeMillis() + 5000, orderId
 
 while (true){
   zrangebyscore key, currentTimeMillis
