@@ -72,8 +72,13 @@ Tree、Array、List、 、Hash、图
 ### 未分类算法
 
 * MySQL的 B+ 树
-* Redis的 一致性hash
-* CPU多线程运行队列，cfs_rq 红黑树
+* Redis、Dubbo的负载均衡 一致性hash
+    * 2^32 上生成一个环、设置服务器的hash以及位置、目标key通过hashcode查找目标key顺时针最近的服务器节点
+    * Redis默认的HASH一致性算法 KETAMA_HASH
+* CPU多线程运行队列，cfs_rq 红黑树,几何计算
+    * 主要用于存储有序的数据，相当于忽略排序过程
+    * JDK红黑树代码实现TreeMap
+    * 红黑树 ceilingEntry直接取右边第一个节点，如果为null即结束
 
 ### Google 算法
 
