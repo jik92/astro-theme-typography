@@ -25,6 +25,27 @@ kv 数据库， 单线程高并发，支持集群，可以实现队列，事务�
 - 集群 一致性hash的集群分布，支持从复制的高可用方案
 - 持久化机制 AOF、RDB、混合模式（优先AOF恢复）
 
+### 延时队列
+
+```bash
+lpush mq 'topic' 'xxx'
+lpop mq 'topic'
+
+zadd currentTimeMillis() + 5000
+
+while (true){
+  zrangebyscore key, currentTimeMillis
+  if (reuslt.length==0){
+    done; break;
+  }else{
+    if(zrem key,result >0){
+      handle()
+      }
+    }
+  }
+}
+```
+
 # 以下旧文堆叠
 
 ## 工具
