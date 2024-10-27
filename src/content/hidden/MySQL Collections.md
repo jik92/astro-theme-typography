@@ -1,6 +1,6 @@
 ---
 title: MySQL Collections
-pubDate: 2024-10-26
+pubDate: 2024-1-1
 categories: [ 'redis' ]
 description: ''
 ---
