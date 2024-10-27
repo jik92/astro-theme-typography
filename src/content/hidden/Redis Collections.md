@@ -45,6 +45,71 @@ while (true){
 }
 ```
 
+### 常见数据集
+
+* Hash（哈希）、String（字符串） 缓存对象、常规计数、分布式锁、session共享
+* List（列表）
+    * 双向列表 消息队列 相关命令：lpush lpop lrpop BRPOPLPUSH
+    * 压缩列表（listpack）
+        * 缓存对象 HMSET uid:1 name Tom age 15
+        * 购物车
+            * HSET cart:{用户id} {商品id} 1；
+            * HINCRBY cart:{用户id} {商品id} 1；
+            * HLEN cart:{用户id}；
+            * HDEL cart:{用户id} {商品id}；HGETALL cart:{用户id}
+
+* Set（集合）2^32-1
+    * 点赞 SADD article:1 uid:1；SREM article:1 uid:1；SMEMBERS article:1；SCARD article:1；SISMEMBER article:1 uid:1
+    * 共同关注好友 SADD uid:1 5 6 7 8 9;SINTER uid:1 uid:2;SISMEMBER uid:1 5;
+    * 抽奖 SADD lucky Tom Jerry John Sean Marry Lindy Sary Mark;SRANDMEMBER lucky 1;SPOP lucky 1;
+* Zset（有序集合）skiplist、listpack
+    * 排行榜
+        * ZADD user:xiaolin:ranking 200 arcticle:1；设置赞数
+        * ZINCRBY user:xiaolin:ranking 1 arcticle:4；新增一个赞
+        * ZSCORE user:xiaolin:ranking arcticle:4；查看某赞数
+        * ZREVRANGE user:xiaolin:ranking 0 2 WITHSCORES；获取赞数最多的文章
+        * ZRANGEBYSCORE user:xiaolin:ranking 100 200 WITHSCORES；获取100-200赞文章
+    * 电话排序
+        * ZADD phone 0 13100111100 0 13110114300 0 13132110901
+        * ZRANGEBYLEX phone - +
+        * ZRANGEBYLEX phone [132 (133
+
+* BitMap（2.2 版新增）底层String实现的，二值状态统计
+    * 签到
+        * SETBIT uid:sign:100:202206 2 1
+        * GETBIT uid:sign:100:202206 2
+        * BITCOUNT uid:sign:100:202206
+        * BITPOS uid:sign:100:202206 1 首次打卡时间
+    * 判断用户登录状态
+        * SETBIT login_status 10086 1
+        * GETBIT login_status 10086
+        * SETBIT login_status 10086 0
+        * 统计签到用户总数 BITOP AND destmap bitmap:01 bitmap:02 bitmap:03；BITCOUNT destmap
+
+* HyperLogLog（2.8 版新增）不精确去重计数、非常省空间
+    * UV计数
+        * PFADD page1:uv user1 user2 user3 user4 user5
+        * PFCOUNT page1:uv
+
+* GEO（3.2 版新增）
+    * 滴滴叫车
+        * GEOADD cars:locations 116.034579 39.030452 33
+        * GEORADIUS cars:locations 116.054579 39.030452 5 km ASC COUNT 10
+
+* Stream（5.0 版新增）完美地实现消息队列，它支持消息的持久化、支持自动生成全局唯一 ID、支持 ack 确认消息的模式、支持消费组模式等
+    * 消息队列
+        * XADD mymq * name xiaolin；返货一个全局ID
+        * XREAD BLOCK 10000 STREAMS mymq $
+        * XGROUP CREATE mymq group1 0-0
+        * XREADGROUP GROUP group1 consumer1 STREAMS mymq
+
+### 持久化实现
+
+* AOF appendfsync:always|everysec|no(取决于fsync()的触发时机))
+* RDB (copy-on-write)
+* 混合持久 aof-use-rdb-preamble yes
+* 检查最后一次 latest_fork_usec info中的耗时
+
 # 以下旧文堆叠
 
 ## 工具
