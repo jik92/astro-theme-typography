@@ -22,6 +22,21 @@ description: ''
 * type ALL-index-(range-ref-eq_ref-const)
 * extra filesort-temporay-(index 不需要回表)
 
+## 事务
+
+事务维护ACID，持久性 redo-log、原子性 undo-log、隔离性 locker、一致性
+![img.png](../../assets/acid.png)
+
+* 乐观锁 update test set score = score + 1 where id = 1 and score = 0
+* 悲观锁 start transaction; select * from version for update; update xxxx ; commit;
+
+## 日志
+
+* undo-log 回滚日志
+* redo-log 重做日志（Innodb） （Write-Ahead Logging）刷完之后 buffer_pool 再 write
+* binlog 归档日志 所有引擎都可以用
+* 2PC prepare阶段写入 redo-log 然后 commit阶段写入binlog再更新 redo-log 状态done
+
 # 以下旧文堆叠
 
 #### docker quick start image
@@ -180,18 +195,11 @@ cp /usr/local/opt/mysql/support-files/my-default.cnf /etc/my.cnf
 
 #### 陷阱
 
-0x00
-![](http://img.sandseasoft.com/image/e/03/7886af0d9d930ee621f712e4ebe43.png)
-![](http://img.sandseasoft.com/image/c/2f/bab17f82be4d64b98854c4637851d.png)
-
-0x01
-大并发的 batchinsert 操作是不会锁表的，锁表可能就是 auto_increment
-
-0x02
-limit 性能很差，越翻页到后面越慢，用 between and 代替
-
-0x03
-truncate table 操作会导致 client datasource 找不到这张表， 因为表重建了。
+0x00 精度问题
+0x01 大并发的 batchinsert 操作是不会锁表的，锁表可能就是 auto_increment
+0x02 limit 性能很差，越翻页到后面越慢，用 between and 代替
+0x03 truncate table 操作会导致 client datasource 找不到这张表， 因为表重建了。
+预估count explain select count(*) from t_order;
 
 #### 习惯
 
