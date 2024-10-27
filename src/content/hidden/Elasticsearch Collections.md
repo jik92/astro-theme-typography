@@ -5,7 +5,44 @@ categories: [ 'redis' ]
 description: ''
 ---
 
-以下就文檔堆叠
+## Query 和 Filter 的区别
+
+* query 查询会算 score
+* filter 不会计算分值，不关心排序和缓存
+
+## ES主分片写数据的详细流程
+
+* 写入 memory buffer
+* 写入 transaction log
+* 文档有 _version 保证文档一致性
+
+## 优化方法
+
+### 设计阶段调优
+
+* 5-15MB数据批量写入
+* flush_threshold_size 增加 buffer 的容量
+* 冷热数据迁移，优先设置Mapping熟悉
+* 使用 m2 ssd
+* 可以使用基于日期的模板创建索引，通过 roll over api滚动索引（重要）
+* 每天凌晨做 force_merge （重要）
+
+### 写入调优
+
+* 可以先关闭replica，写入完数据再打开
+* 关闭 refresh_interval=-1
+* 使用bulk批量写入（轮询访问所有节点，不要单点DDOS）
+* 尽量使用自动生成id
+
+## 查询阶段调优
+
+* filesystem cache 越大越好，可以提前预热，设置index.store.preload
+* 避免join操作
+* 优先使用 range_aggregation 框一下范围，然后使用 term_aggregation 做筛选
+* 优先用keyword
+* 查询具体date ，避免使用now，会绕过缓存
+
+# 以下就文檔堆叠
 
 简介
 
