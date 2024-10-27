@@ -5,6 +5,23 @@ categories: [ 'redis' ]
 description: ''
 ---
 
+# MySQL 数据结构
+
+* 表空间由段（segment）、区（extent）、页（page）、行（row）组成。
+* InnoDB 的数据是按「页」为单位来读写的，每page默认16kb，Page里面很多Row，B+树
+* B+树磁盘IO性能更好，适合范围查询
+
+## 索引使用
+
+* 需要使用索引：唯一索引、GroupBy/OrderBy、Where中表达查询的字段、最好设置NotNull
+* 不需要使用索引：WHERE条件、重复数据、经常更新
+* 哪些情况不走索引：1、like 2、or 3、联合索引左匹配
+
+## explain 关注结果
+
+* type ALL-index-(range-ref-eq_ref-const)
+* extra filesort-temporay-(index 不需要回表)
+
 # 以下旧文堆叠
 
 #### docker quick start image
