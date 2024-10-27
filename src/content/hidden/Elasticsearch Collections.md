@@ -14,7 +14,7 @@ description: ''
 
 * 写入 memory buffer
 * 写入 transaction log
-* 文档有 _version 保证文档一致性
+* 文档有 _version 保证文档一致性（乐观锁）
 
 ## 优化方法
 
@@ -25,7 +25,7 @@ description: ''
 * 冷热数据迁移，优先设置Mapping熟悉
 * 使用 m2 ssd
 * 可以使用基于日期的模板创建索引，通过 roll over api滚动索引（重要）
-* 每天凌晨做 force_merge （重要）
+* 每天凌晨对只读索引做 force_merge （重要）
 
 ### 写入调优
 
