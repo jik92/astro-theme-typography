@@ -1,7 +1,7 @@
 ---
 title: Architecture Collections
-pubDate: 2024-10-25
-categories: [ 'architecture' ]
+pubDate: 2024-1-1
+categories: [ '面试','architecture' ]
 description: ''
 ---
 

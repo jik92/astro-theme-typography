@@ -1,7 +1,7 @@
 ---
 title: 常规面试问题的思考集
-pubDate: 2024-10-22
-categories: [ 'interviewer' ]
+pubDate: 2024-1-1
+categories: [  '面试','interviewer' ]
 description: ''
 ---
 
