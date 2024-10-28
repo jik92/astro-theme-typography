@@ -143,6 +143,12 @@ private Integer[] splitRedPackage(int totalMoney, int redPackageNumber)
     * 将多个操作组成一个原子操作
 * 异步加载
 
+## 有哪些常见线上JVM错误
+
+https://github.com/vipcolud/monitor
+
+## 你有没有用过线程池，具体哪些场景
+
 # 部分问题集合
 
 #### Fordeal 跨境电商

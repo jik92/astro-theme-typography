@@ -65,6 +65,20 @@ description: ''
 * 本地方法栈：与栈类似，不过本地方法栈为 JVM 使用到的 native 方法服务。
 * 程序计数器：每个线程都有一个独立的程序计数器，用于指示当前线程执行到了字节码的哪一行。
 
+# JVM dump 方法
+
+参考 https://ifeve.com/%e7%94%b1jdk-bug%e5%bc%95%e5%8f%91%e7%9a%84%e7%ba%bf%e4%b8%8aoom
+
+```bash
+yum install -y gdb
+ulimit -c unlimited
+gcore 100 -o core
+jmap -dump:format=b,file=heap.hprof `which java` core.100
+```
+
+* [Btrace](https://github.com/btraceio/btrace) 使用
+* [arthas](https://github.com/alibaba/arthas) 使用
+
 # JVM 优化
 
 * 标记-复制 标记-清除
