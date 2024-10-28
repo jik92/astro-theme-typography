@@ -42,3 +42,14 @@ screenpipe https://github.com/mediar-ai/screenpipe?tab=readme-ov-file
 manim 视觉动画引擎
 papermark 文件分享引擎
 surya OCR https://github.com/VikParuchuri/surya
+
+## 推理引擎
+
+* openvino
+* tensorrt
+* onnx
+
+## 检索系统
+
+* faiss
+* milvus
