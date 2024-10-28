@@ -39,6 +39,9 @@ description: ''
         * ScheduledThreadPoolExecutor
     * Fork/Join 无锁编程框架，使用原子操作和内存屏障，用于计算密集型任务、大数据处理、递归算法
     * CompletableFuture
+* 线程池框架
+    * [Disruptor](https://github.com/LMAX-Exchange/disruptor)
+    * [dynamictp](https://dynamictp.cn/guide/use/quick-start.html)
 
 ```java
         ExecutorService executorService = Executors.newSingleThreadExecutor();
