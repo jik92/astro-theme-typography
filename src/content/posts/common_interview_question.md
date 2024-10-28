@@ -1,7 +1,7 @@
 ---
 title: 常规面试问题的思考集
 pubDate: 2024-1-1
-categories: [  '面试','interviewer' ]
+categories: [ '面试','interviewer' ]
 description: ''
 ---
 
@@ -57,6 +57,7 @@ description: ''
 
 场景问题主要是让你找product sense，所以其实答案本身不重要，你需要充分和面试官沟通询问模块细节，了解用户人群，需求分析，流程分析，简单设计，上线预言，维护监控
 尝试用MECE（Mutually Exclusive Collectively Exhaustive）法做问题拆解，首要是能把問題拆小，讓我們能更好理解。
+
 * 加法拆解，问题分布
 * 乘法拆解，细分考虑各种场景
 
@@ -94,7 +95,39 @@ Google SRE
 
 ## 对于微信红包业务怎么设计？
 
+```bash
+lpushall RED_PACKAGE_KEY+red_id [10,10,10,10] ttl=1 day
+get RED_PACKAGE_CONSUME_KEY+red_id,user_id
+lpop RED_PACKAGE_KEY +red_id
+put RED_PACKAGE_CONSUME_KEY+red_id,user_id,10
+
+// 二倍均值法
+// 每次抢到的金额=随机区间(0,(剩余红包金额M÷剩余人数N)X2)
+
+private Integer[] splitRedPackage(int totalMoney, int redPackageNumber)
+    {
+        int useMoney = 0;
+        Integer[] redPackageNumbers = new Integer[redPackageNumber];
+        Random random = new Random();
+
+        for (int i = 0; i < redPackageNumber; i++)
+        {
+            if(i == redPackageNumber - 1)
+            {
+                redPackageNumbers[i] = totalMoney - useMoney;
+            }else{
+                int avgMoney = (totalMoney - useMoney) * 2 / (redPackageNumber - i);
+                redPackageNumbers[i] = 1 + random.nextInt(avgMoney - 1);
+            }
+            useMoney = useMoney + redPackageNumbers[i];
+        }
+        return redPackageNumbers;
+}
+```
+
 ## 对于抖音的福袋怎么设计？
+
+## Redis要做百万级别的数据插入怎么做
 
 # 部分问题集合
 

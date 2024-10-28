@@ -31,12 +31,26 @@ description: ''
 * 阻塞队列
     * ArrayBlockingQueue、PriorityBlockingQueue、DelayQueue、SynchronousQueue、LinkedTransferQueue、LinkedBlockingDeque
 * 线程池
-    * ThreadLocal
+    * ThreadLocal 本地线程保存值，或者线程池值的传递
     * TreadPoolExecutor:corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue
         * SingleThreadPool
         * FixedThreadPool
         * CachedThreadPool
         * ScheduledThreadPoolExecutor
+    * Fork/Join 无锁编程框架，使用原子操作和内存屏障，用于计算密集型任务、大数据处理、递归算法
+    * CompletableFuture
+
+```java
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> {
+            System.out.println("do something....");
+            return "result";
+        }, executorService);
+ 
+        //等待子任务执行完成
+        System.out.println("结果->" + cf.get());
+
+```
 
 # JMM 模型
 
