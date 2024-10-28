@@ -1,7 +1,7 @@
 ---
 title: Elasticsearch Collections
 pubDate: 2024-1-1
-categories: [ 'redis' ]
+categories: [ '面试', 'elasticsearch' ]
 description: ''
 ---
 
