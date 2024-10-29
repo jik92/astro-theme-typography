@@ -63,32 +63,35 @@ description: ''
 
 ## 如何做稳定性保障？（发散问题）
 
+![img.png](../../assets/SRE保障.png)
+![img.png](../../assets/SER_Arch.png)
+
 ```markdown
 # 稳定性保障策略
 
-Google SRE
+Google SRE https://developer.aliyun.com/article/782540
 
-- **服务隔离**：通过容器化技术隔离服务，防止故障蔓延。
-- **负载测试**：使用Apache JMeter等工具模拟用户访问，评估系统性能。
-- **压力测试**：逐渐增加负载，测试系统在极限条件下的表现。
-- **容量规划**：根据业务需求进行容量规划，确保系统应对流量变化。
-- **实时监控**：使用Prometheus、Grafana监控系统运行时指标。
-- **告警机制**：设置告警阈值，系统指标异常时及时告警。
-- **限流**：使用Sentinel等工具设置限流策略，防止系统过载。
-- **熔断**：使用Hystrix或Resilience4j实现熔断机制，防止故障蔓延。
-- **本地缓存**：使用Guava Cache或Ehcache实现本地缓存。
-- **分布式缓存**：使用Redis等存储全局共享数据，提升性能。
-- **统一异常处理**：使用AOP统一捕获和处理服务层异常。
-- **降级策略**：临时关闭非关键功能或简化复杂功能，确保核心服务稳定。
-- **分布式追踪**：使用SkyWalking、Zipkin等工具实现分布式追踪。
+* 设计阶段
+    * 容量规划 Capacity Planning
+    * 统一异常处理
+    * 超时/重试
+    * 无状态设计
+    * 幂等设计
 
-## 参考资料
+* 监控保障
+    * 实时监控（物理机日志、系统日志、用户日志）
+    * 告警机制
 
-- [阿里云开发者社区](https://developer.aliyun.com/article/782540)
-- [性能测试与负载均衡](https://developer.aliyun.com/article/1554956)
-- [系统稳定性与高可用保障](https://zhuanlan.zhihu.com/p/579442834)
-- [实时监控和警报系统](https://developer.aliyun.com/article/1558688)
-- [Java应用系统稳定性方案](https://blog.csdn.net/weixin_39304656/article/details/142685720)
+* 可预见性
+    * 负载压力测试 ab/灰度/全量测试
+    * 本地缓存/分布式缓存/分布式队列
+
+* 不可预见性
+    * 服务隔离（docker技术）、限流（Rate Limiting 令牌桶）、熔断（Circuit Breaker 直接服务不可用返回null）、降级策略(关闭日志)
+
+* 后期复盘
+    * 分布式追踪, 使用SkyWalking、Zipkin等工具实现分布式追踪。
+
 ```
 
 ## 如果对于大量的用户实现任务积分制，再用积分增加抽奖权重，最后抽奖这个系统怎么设计？/对于抖音的福袋怎么设计？

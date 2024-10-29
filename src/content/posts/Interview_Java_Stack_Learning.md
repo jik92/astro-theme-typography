@@ -208,6 +208,7 @@ jmap -dump:format=b,file=heap.hprof `which java` core.100
     * Dubbo
     * Sentinel
     * Hystrix
+    * Resilience4j
     * Spring Cloud Alibaba
 
 * Task
