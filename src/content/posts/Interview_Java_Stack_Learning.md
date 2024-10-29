@@ -10,15 +10,22 @@ description: ''
 ## 计算机基础
 
 * copy-on-write 用户态/系统态 fork()/exec()
-* Orika 属性复制
+* compare and swap
 
 # Java 新特性
 
 # JUC
 
-* volatile and synchronized
-* 内存模型 happens-before 、 锁膨胀、double check lock
-* 锁
+* volatile 解决ACID问题
+    * 保证可见性
+    * 禁止指令重排序（happen-befored）
+* synchronized
+    * 对象头 Mark World：HashCode、分代年龄、锁标志位信息；Klass Point 存储对象所映射的实列
+    * 字节码中的表述是 monitorrecord monitorexit
+    * 锁膨胀 无锁-偏向锁-轻量锁（自旋锁）-重锁
+    * 内存模型 happens-before 、double check lock
+
+* 基础工具
     * AbstractQueuedSynchronizer
     * ReentrantLock
 * 并发工具
@@ -29,7 +36,12 @@ description: ''
 * 并发容器
     * ConcurrentHashMap、ConcurrentLinkedQueue、ConcurrentSkipListMap
 * 阻塞队列
-    * ArrayBlockingQueue、PriorityBlockingQueue、DelayQueue、SynchronousQueue、LinkedTransferQueue、LinkedBlockingDeque
+    * ArrayBlockingQueue
+    * PriorityBlockingQueue
+    * DelayQueue
+    * SynchronousQueue
+    * LinkedTransferQueue
+    * LinkedBlockingDeque
 * 线程池
     * ReentrantLock 锁
     * ThreadLocal 本地线程保存值，或者线程池值的传递
