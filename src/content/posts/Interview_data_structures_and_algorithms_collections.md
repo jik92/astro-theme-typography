@@ -243,6 +243,41 @@ function lcs(str1, str2) {
 console.log(lcs("ABCDGH", "AEDFHR"));  // 3
 ```
 
+### LCS 连续最长公共子序列
+```javascript
+function lcSubstring(str1, str2) {
+    let maxLength = 0;
+    let resultSubstring = '';
+    
+    // 对于str1的每个字符
+    for (let i = 0; i < str1.length; i++) {
+        // 对于str2的每个字符
+        for (let j = 0; j < str2.length; j++) {
+            let length = 0;
+            // 当前位置开始匹配
+            while (
+                i + length < str1.length && 
+                j + length < str2.length && 
+                str1[i + length] === str2[j + length]
+            ) {
+                length++;
+            }
+            
+            // 更新最大长度
+            if (length > maxLength) {
+                maxLength = length;
+                resultSubstring = str1.slice(i, i + length);
+            }
+        }
+    }
+    
+    return {
+        length: maxLength,
+        substring: resultSubstring
+    };
+}
+```
+
 ### DFS/BFS 遍历
 
 ```javascript
