@@ -98,3 +98,5 @@ https://github.com/datawhalechina/fun-rec/tree/master
 * 产品管理：理财产品管理功能
 * 奖励管理：用户邀请注册奖励功能
 * 撮合管理：撮合债权与购买投资的资金进行匹配
+
+## 股票量化交易
