@@ -90,7 +90,7 @@ Google SRE https://developer.aliyun.com/article/782540
     * 服务隔离（docker技术）、限流（Rate Limiting 令牌桶）、熔断（Circuit Breaker 直接服务不可用返回null）、降级策略(关闭日志)
 
 * 后期复盘
-    * 分布式追踪, 使用SkyWalking、Zipkin等工具实现分布式追踪。
+    * Metrics-Trace-Log 分布式追踪
 
 ```
 
