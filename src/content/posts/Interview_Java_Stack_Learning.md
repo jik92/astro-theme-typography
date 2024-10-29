@@ -22,10 +22,10 @@ description: ''
     * AbstractQueuedSynchronizer
     * ReentrantLock
 * 并发工具
-    * CyclicBarrier
-    * CountDownLatch
-    * Semaphore
-    * Exchanger
+    * CountDownLatch N个线程到达屏障，则执行
+    * CyclicBarrier 所有线程到达屏障，则执行
+    * Semaphore （红绿灯模型）
+    * Exchanger 线程数据传输
 * 并发容器
     * ConcurrentHashMap、ConcurrentLinkedQueue、ConcurrentSkipListMap
 * 阻塞队列
