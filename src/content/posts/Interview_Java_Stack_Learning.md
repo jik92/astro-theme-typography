@@ -31,17 +31,35 @@ description: ''
 * 阻塞队列
     * ArrayBlockingQueue、PriorityBlockingQueue、DelayQueue、SynchronousQueue、LinkedTransferQueue、LinkedBlockingDeque
 * 线程池
+    * ReentrantLock 锁
     * ThreadLocal 本地线程保存值，或者线程池值的传递
-    * TreadPoolExecutor:corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue
-        * SingleThreadPool
-        * FixedThreadPool
-        * CachedThreadPool
-        * ScheduledThreadPoolExecutor
+    * TreadPoolExecutor:
+        * 基础参数：
+            * corePoolSize、maximumPoolSize`(核心线程数 = CPU核数 * CPU 目标使用率 * （1 + 线程等待耗时 /
+          线程计算耗时）)`、keepAliveTime、unit、workQueue
+        * 常用线程池
+            * SingleThreadPool
+            * FixedThreadPool
+            * CachedThreadPool
+            * ScheduledThreadPoolExecutor
+        * 拒绝策略
+            * AbortPolicy 异常
+            * CallerRunsPolicy 等待
+            * DiscardPolicy 抛弃当前任务
+            * DiscardOldestPolicy 抛弃最后一个任务
+        * 监控
+            * 线程池活跃度告警。活跃度 = activeCount / maximumPoolSize
+            * 队列容量告警。容量使用率 = queueSize / queueCapacity
+            * 拒绝策略告警。当触发拒绝策略时，会进行告警。
+            * 任务执行超时告警。重写 ThreadPoolExecutor 的 afterExecute() 和 beforeExecute()
+              ，根据当前时间和开始时间的差值算出任务执行时长，超过配置的阈值会触发告警。
+            * 任务排队超时告警。重写 ThreadPoolExecutor 的 beforeExecute()，记录提交任务时时间，根据当前时间和提交时间的差值算出任务排队时长，超过配置的阈值会触发告警
+        * 框架
+            * [dynamictp](https://dynamictp.cn/guide/use/quick-start.html)
     * Fork/Join 无锁编程框架，使用原子操作和内存屏障，用于计算密集型任务、大数据处理、递归算法
     * CompletableFuture
-* 线程池框架
+* 并发框架
     * [Disruptor](https://github.com/LMAX-Exchange/disruptor)
-    * [dynamictp](https://dynamictp.cn/guide/use/quick-start.html)
 
 ```java
         ExecutorService executorService = Executors.newSingleThreadExecutor();
