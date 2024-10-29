@@ -1,7 +1,7 @@
 ---
 title: MySQL Collections
 pubDate: 2024-1-1
-categories: ['面试' ,'db' ]
+categories: [ '面试' ,'db' ]
 description: ''
 ---
 
