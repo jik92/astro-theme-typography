@@ -153,6 +153,10 @@ https://github.com/vipcolud/monitor
 
 ## 你有没有用过线程池，具体哪些场景
 
+* 邮件发送
+* 订单状态检查、取消
+* 心跳请求
+
 # 部分问题集合
 
 #### Fordeal 跨境电商
