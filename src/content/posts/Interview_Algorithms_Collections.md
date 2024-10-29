@@ -18,7 +18,20 @@ Tree、Array、List、 、Hash、图
 * Array
 * List
 * Queue、Stack
-* 树 红黑树（二叉搜索树）、多叉树、 二叉堆、 图、 Dict Tree、BST（Binary Search Tree）、DFS、BFS
+* 树
+    * 二叉树
+    * 二叉排序树
+    * 满二叉树
+    * 完全二叉树
+    * 平衡二叉树
+    * AVL（二叉搜索树）
+    * 红黑树（二叉搜索树）
+    * 哈夫曼树
+    * B树 B+树
+    * 二叉堆
+    * BST（Binary Search Tree）
+    * Tier 树
+    * DFS、BFS
 * 图 Union-Find
 
 ## 算法分类
