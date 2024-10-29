@@ -105,8 +105,350 @@ Tree、Array、List、 、Hash、图
 
 ## 常用算法
 
-归并排序
+### 归并排序
 
 ```javascript
+function mergeSort(arr) {
+    if (arr.length < 2) {
+        return arr;
+    }
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+}
 
+function merge(left, right) {
+    let result = [];
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+    return result.concat(left.slice() || right.slice());
+}
+```
+
+### 八皇后
+
+```javascript
+function solveNQueens(n) {
+    const results = [];
+    const board = Array.from({length: n}, () => new Array(n).fill('.'));
+
+    function placeQueen(row, queens) {
+        if (row === n) {
+            const result = [];
+            queens.forEach((queen, index) => {
+                const solution = board.map((row, i) => row.map(cell => cell === 'Q' ? 'Q' : '.'));
+                solution[queen][index] = 'Q';
+                result.push(solution.map(row => row.join('')).join('\n'));
+            });
+            results.push(...result);
+            return;
+        }
+
+        for (let col = 0; col < n; col++) {
+            if (isSafe(row, col, queens)) {
+                board[row][col] = 'Q';
+                placeQueen(row + 1, queens.concat(col));
+                board[row][col] = '.';
+            }
+        }
+    }
+
+    function isSafe(row, col, queens) {
+        for (let i = 0; i < row; i++) {
+            if (board[i][col] === 'Q' || queens.includes(i * n + col)) {
+                return false;
+            }
+        }
+        let left = col - 1, right = col + 1, i = row - 1;
+        while (i >= 0 && left >= 0) {
+            if (board[i][left--] === 'Q') return false;
+            i--;
+        }
+        while (i >= 0 && right < n) {
+            if (board[i][right++] === 'Q') return false;
+            i--;
+        }
+        return true;
+    }
+
+    placeQueen(0, []);
+    return results;
+}
+```
+
+### 编辑距离
+
+```javascript
+function minDistance(word1, word2) {
+  return editDist(word1, word2, word1.length, word2.length);
+}
+
+function editDist(str1, str2, m, n) {
+  if (m === 0) return n;
+  if (n === 0) return m;
+
+  if (str1[m - 1] === str2[n - 1]) {
+    return editDist(str1, str2, m - 1, n - 1);
+  }
+
+  return 1 + Math.min(
+          editDist(str1, str2, m, n - 1),
+          editDist(str1, str2, m - 1, n),
+          editDist(str1, str2, m - 1, n - 1)
+  );
+}
+
+
+```
+
+### 红黑树
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+    this.parent = null;
+    this.color = 'RED';
+  }
+}
+
+class RedBlackTree {
+  constructor() {
+    this.nil = new Node(null);
+    this.nil.color = 'BLACK';
+    this.root = this.nil;
+  }
+
+  leftRotate(x) {
+    const y = x.right;
+    x.right = y.left;
+    if (y.left !== this.nil) {
+      y.left.parent = x;
+    }
+    y.parent = x.parent;
+    if (x.parent === this.nil) {
+      this.root = y;
+    } else if (x === x.parent.left) {
+      x.parent.left = y;
+    } else {
+      x.parent.right = y;
+    }
+    y.left = x;
+    x.parent = y;
+  }
+
+  rightRotate(x) {
+    const y = x.left;
+    x.left = y.right;
+    if (y.right !== this.nil) {
+      y.right.parent = x;
+    }
+    y.parent = x.parent;
+    if (x.parent === this.nil) {
+      this.root = y;
+    } else if (x === x.parent.right) {
+      x.parent.right = y;
+    } else {
+      x.parent.left = y;
+    }
+    y.right = x;
+    x.parent = y;
+  }
+
+  insert(data) {
+    const node = new Node(data);
+    let y = this.nil;
+    let x = this.root;
+
+    while (x !== this.nil) {
+      y = x;
+      if (node.data < x.data) {
+        x = x.left;
+      } else {
+        x = x.right;
+      }
+    }
+
+    node.parent = y;
+    if (y === this.nil) {
+      this.root = node;
+    } else if (node.data < y.data) {
+      y.left = node;
+    } else {
+      y.right = node;
+    }
+
+    node.left = this.nil;
+    node.right = this.nil;
+    this.insertFixup(node);
+  }
+
+  insertFixup(z) {
+    while (z.parent.color === 'RED') {
+      if (z.parent === z.parent.parent.left) {
+        const y = z.parent.parent.right;
+        if (y.color === 'RED') {
+          z.parent.color = 'BLACK';
+          y.color = 'BLACK';
+          z.parent.parent.color = 'RED';
+          z = z.parent.parent;
+        } else {
+          if (z === z.parent.right) {
+            z = z.parent;
+            this.leftRotate(z);
+          }
+          z.parent.color = 'BLACK';
+          z.parent.parent.color = 'RED';
+          this.rightRotate(z.parent.parent);
+        }
+      } else {
+        const y = z.parent.parent.left;
+        if (y.color === 'RED') {
+          z.parent.color = 'BLACK';
+          y.color = 'BLACK';
+          z.parent.parent.color = 'RED';
+          z = z.parent.parent;
+        } else {
+          if (z === z.parent.left) {
+            z = z.parent;
+            this.rightRotate(z);
+          }
+          z.parent.color = 'BLACK';
+          z.parent.parent.color = 'RED';
+          this.leftRotate(z.parent.parent);
+        }
+      }
+    }
+    this.root.color = 'BLACK';
+  }
+
+  delete(data) {
+    let z = this.search(data);
+    if (!z) return false;
+
+    let y = z;
+    let x;
+    let originalColor = y.color;
+
+    if (z.left === this.nil) {
+      x = z.right;
+      this.transplant(z, z.right);
+    } else if (z.right === this.nil) {
+      x = z.left;
+      this.transplant(z, z.left);
+    } else {
+      y = this.minimum(z.right);
+      originalColor = y.color;
+      x = y.right;
+      if (y.parent === z) {
+        x.parent = y;
+      } else {
+        this.transplant(y, y.right);
+        y.right = z.right;
+        y.right.parent = y;
+      }
+      this.transplant(z, y);
+      y.left = z.left;
+      y.left.parent = y;
+      y.color = z.color;
+    }
+
+    if (originalColor === 'BLACK') {
+      this.deleteFixup(x);
+    }
+    return true;
+  }
+
+  deleteFixup(x) {
+    while (x !== this.root && x.color === 'BLACK') {
+      if (x === x.parent.left) {
+        let w = x.parent.right;
+        if (w.color === 'RED') {
+          w.color = 'BLACK';
+          x.parent.color = 'RED';
+          this.leftRotate(x.parent);
+          w = x.parent.right;
+        }
+        if (w.left.color === 'BLACK' && w.right.color === 'BLACK') {
+          w.color = 'RED';
+          x = x.parent;
+        } else {
+          if (w.right.color === 'BLACK') {
+            w.left.color = 'BLACK';
+            w.color = 'RED';
+            this.rightRotate(w);
+            w = x.parent.right;
+          }
+          w.color = x.parent.color;
+          x.parent.color = 'BLACK';
+          w.right.color = 'BLACK';
+          this.leftRotate(x.parent);
+          x = this.root;
+        }
+      } else {
+        let w = x.parent.left;
+        if (w.color === 'RED') {
+          w.color = 'BLACK';
+          x.parent.color = 'RED';
+          this.rightRotate(x.parent);
+          w = x.parent.left;
+        }
+        if (w.right.color === 'BLACK' && w.left.color === 'BLACK') {
+          w.color = 'RED';
+          x = x.parent;
+        } else {
+          if (w.left.color === 'BLACK') {
+            w.right.color = 'BLACK';
+            w.color = 'RED';
+            this.leftRotate(w);
+            w = x.parent.left;
+          }
+          w.color = x.parent.color;
+          x.parent.color = 'BLACK';
+          w.left.color = 'BLACK';
+          this.rightRotate(x.parent);
+          x = this.root;
+        }
+      }
+    }
+    x.color = 'BLACK';
+  }
+
+  transplant(u, v) {
+    if (u.parent === this.nil) {
+      this.root = v;
+    } else if (u === u.parent.left) {
+      u.parent.left = v;
+    } else {
+      u.parent.right = v;
+    }
+    v.parent = u.parent;
+  }
+
+  search(data) {
+    let current = this.root;
+    while (current !== this.nil && data !== current.data) {
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return current === this.nil ? null : current;
+  }
+
+  minimum(node) {
+    while (node.left !== this.nil) {
+      node = node.left;
+    }
+    return node;
+  }
+}
 ```
