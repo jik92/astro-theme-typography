@@ -208,19 +208,20 @@ function editDist(str1, str2, m, n) {
 ```
 
 ### LCS字符串问题
+
 ```javascript
 function lcs(str1, str2) {
     const memo = new Map();
-    
+
     function lcsHelper(i, j) {
         const key = `${i},${j}`;
-        
+
         // 基础情况
         if (i === 0 || j === 0) return 0;
-        
+
         // 检查是否已经计算过
         if (memo.has(key)) return memo.get(key);
-        
+
         let result;
         if (str1[i - 1] === str2[j - 1]) {
             result = 1 + lcsHelper(i - 1, j - 1);
@@ -230,17 +231,18 @@ function lcs(str1, str2) {
                 lcsHelper(i, j - 1)
             );
         }
-        
+
         memo.set(key, result);
         return result;
     }
-    
+
     return lcsHelper(str1.length, str2.length);
 }
 
 // 使用示例
 console.log(lcs("ABCDGH", "AEDFHR"));  // 3
 ```
+
 ### DFS/BFS 遍历
 
 ```javascript
