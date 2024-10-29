@@ -156,6 +156,7 @@ https://github.com/vipcolud/monitor
 * 邮件发送
 * 订单状态检查、取消
 * 心跳请求
+* 并发查询查询请求
 
 # 部分问题集合
 
