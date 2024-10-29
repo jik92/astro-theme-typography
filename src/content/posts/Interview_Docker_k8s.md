@@ -70,11 +70,11 @@ COPY yarn.lock ./yarn.lock
 COPY .yarn ./.yarn
 COPY .yarnrc.yml ./.yarnrc.yml
 COPY packages/common ./packages/common
-COPY packages/patent-miner/package.json ./packages/patent-miner/package.json
+COPY packages/pentat-miner/package.json ./packages/pentat-miner/package.json
 RUN corepack enable
 # RUN yarn install
-RUN yarn workspaces focus @accutar/patent-miner
-WORKDIR /app/packages/patent-miner
+RUN yarn workspaces focus @accutar/pentat-miner
+WORKDIR /app/packages/pentat-miner
 # ENTRYPOINT ["yarn", "tsx","./src/tasks/TaskRunner.ts"]
 ENTRYPOINT ["node", "/app/node_modules/.bin/tsx", "./src/tasks/TaskRunner.ts"]
 # ENTRYPOINT ["yarn", "main"]
@@ -147,24 +147,29 @@ kubectl exec -it nginx-deployment-58d6d6ccb8-lc5fp bash
 
 ```bash
 #!/usr/bin/env bash
+gcloud auth application-default login
+gcloud config set project pentat-pack-dev
+gcloud auth configure-docker us-docker.pkg.dev
+gcloud container clusters get-credentials --zone us-west1 pentat-miner-cluster
+
 #sudo find . -name "*.dict" -delete
 # 同步binary，挂载硬盘
 gcloud compute instances start small-test
 #mount rw-disk
-gcloud compute instances attach-disk small-test --disk=us-patent-resource-191202 --zone=us-west1-b
+gcloud compute instances attach-disk small-test --disk=us-pentat-resource-191202 --zone=us-west1-b
 gcloud compute ssh small-test --zone=us-west1-b --command="sudo lsblk && sudo mount /dev/sdb /mnt/disks/retroxxxx"
 #upload data to rw-disk and detach
 gcloud compute ssh small-test --zone=us-west1-b --command="sudo rm -rf /mnt/disks/retroxxxx/bak_200103/*"
 gcloud compute scp * root@small-test:/mnt/disks/retroxxxx/bak_200103
 gcloud compute ssh small-test --zone=us-west1-b --command="sudo umount /dev/sdb && sudo fsck.ext4 -vy /dev/sdb "
-gcloud compute instances detach-disk small-test --disk=us-patent-resource-191202 --zone=us-west1-b
+gcloud compute instances detach-disk small-test --disk=us-pentat-resource-191202 --zone=us-west1-b
 #create image
-gcloud compute images delete us-patent-resource-200109-image
-gcloud compute disks delete us-patent-resource-200109
+gcloud compute images delete us-pentat-resource-200109-image
+gcloud compute disks delete us-pentat-resource-200109
 
-gcloud compute images create us-patent-resource-200109-image --source-disk=us-patent-resource-191202 --source-disk-zone=us-west1-b
+gcloud compute images create us-pentat-resource-200109-image --source-disk=us-pentat-resource-191202 --source-disk-zone=us-west1-b
 #create disk by snapshot/ssd persist disk/450
-gcloud compute disks create us-patent-resource-200109 --image=us-patent-resource-200109-image --size=450gb --type=pd-ssd --zone=us-west1-b
+gcloud compute disks create us-pentat-resource-200109 --image=us-pentat-resource-200109-image --size=450gb --type=pd-ssd --zone=us-west1-b
 
 
 #to make xxxx, and to update
@@ -193,10 +198,6 @@ gsutil -m setmeta -h "Content-Type:application/wasm" "gs://dev-retroxxxx.yyyy.co
 gsutil -m setmeta -h "Cache-Control:private,no-cache,max-age=0" "gs://dev-retroxxxx.yyyy.com/**.html"
 
 
-gcloud auth application-default login
-gcloud config set project patent-pack-dev
-gcloud auth configure-docker us-docker.pkg.dev
-gcloud container clusters get-credentials --zone us-west1 patent-miner-cluster
 
 
 ```
