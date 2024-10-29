@@ -223,7 +223,7 @@ jmap -dump:format=b,file=heap.hprof `which java` core.100
     * Druid
     * Sharding-Sphere
 * Seata
-    * 2PC
+    * 2PC/3PC
     * TCC-Transaction
 
 * Database
