@@ -45,7 +45,7 @@ description: ''
     * DelayQueue 延迟队列
     * SynchronousQueue 阻塞队列
     * LinkedTransferQueue 无界的阻塞队列
-    * LinkedBlockingDeque
+    * LinkedBlockingDeque 无界的阻塞队列
 * 线程池
     * ReentrantLock 锁
     * ThreadLocal 本地线程保存值，或者线程池值的传递
