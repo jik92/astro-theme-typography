@@ -132,6 +132,31 @@ jmap -dump:format=b,file=heap.hprof `which java` core.100
             * Cleanup
         * Evacuation Pause
     * ZGC
+* GC 日志开启
+
+```bash
+# 日志打印
+-Xlog:gc*,gc+ref=debug,gc+heap=debug,gc+age=trace,gc+ergo*=trace:file=gc-%p-%t.log:tags,uptime,time,level:filecount=10,filesize=1k -jar xxx.jar
+# 异常时生成堆文件输出
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/data/dump/jvm.dump
+
+# G1优化
+-XX:MaxGCPauseMillis= 200ms (50-100ms 或者 200-300ms)
+# 进一步优化
+-XX:GCTimeRatio
+-XX:G1NewSizePercent
+-XX:G1MaxNewSizePercen
+-XX:ParallelGCThreads
+```
+
+* 压测 ab/locust
+* 性能检查工具
+    * 函数检查 jmh
+    * vmstat -l
+    * isstat -xm 5
+    * nicstat 5
+    * htop -h
 * 优化关键指标 latency、throughput、capacity
 
 # NIO/Netty
