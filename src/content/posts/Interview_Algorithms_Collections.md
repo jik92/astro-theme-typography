@@ -47,7 +47,7 @@ Tree、Array、List、 、Hash、图
     * 区间调度
 * 二分图
 * 二叉堆 PriorityQueue、Twitter
-* 哈希表-双向链表 LRU、twoSum
+* 哈希表-双向链表 LRU、LFU、twoSum
 * 树
     * BST
     * 线索树
@@ -244,11 +244,12 @@ console.log(lcs("ABCDGH", "AEDFHR"));  // 3
 ```
 
 ### LCS 连续最长公共子序列
+
 ```javascript
 function lcSubstring(str1, str2) {
     let maxLength = 0;
     let resultSubstring = '';
-    
+
     // 对于str1的每个字符
     for (let i = 0; i < str1.length; i++) {
         // 对于str2的每个字符
@@ -256,13 +257,13 @@ function lcSubstring(str1, str2) {
             let length = 0;
             // 当前位置开始匹配
             while (
-                i + length < str1.length && 
-                j + length < str2.length && 
+                i + length < str1.length &&
+                j + length < str2.length &&
                 str1[i + length] === str2[j + length]
-            ) {
+                ) {
                 length++;
             }
-            
+
             // 更新最大长度
             if (length > maxLength) {
                 maxLength = length;
@@ -270,7 +271,7 @@ function lcSubstring(str1, str2) {
             }
         }
     }
-    
+
     return {
         length: maxLength,
         substring: resultSubstring

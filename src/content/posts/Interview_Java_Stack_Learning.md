@@ -36,13 +36,15 @@ description: ''
     * Semaphore （红绿灯模型）
     * Exchanger 线程数据传输
 * 并发容器
-    * ConcurrentHashMap、ConcurrentLinkedQueue、ConcurrentSkipListMap
+    * ConcurrentHashMap 红黑树
+    * ConcurrentLinkedQueue 链表
+    * ConcurrentSkipListMap 跳表
 * 阻塞队列
-    * ArrayBlockingQueue
-    * PriorityBlockingQueue
-    * DelayQueue
-    * SynchronousQueue
-    * LinkedTransferQueue
+    * ArrayBlockingQueue 阻塞队列
+    * PriorityBlockingQueue 优先阻塞
+    * DelayQueue 延迟队列
+    * SynchronousQueue 阻塞队列
+    * LinkedTransferQueue 无界的阻塞队列
     * LinkedBlockingDeque
 * 线程池
     * ReentrantLock 锁
@@ -159,102 +161,97 @@ jmap -dump:format=b,file=heap.hprof `which java` core.100
     * htop -h
 * 优化关键指标 latency、throughput、capacity
 
-# NIO/Netty
+## 架构基础原则
 
+* CAP原则/BASE原则/12factor原则
+* 数据库提交 2PC/3PC 原则，扩展分布式事务 seata （2PC/TCC/XA）
+* Paxos/Raft 共同点，当复制时都要降级选举，2N-1 个节点找新的leader，有个Follower记录人
 * 阻塞、非阻塞、异步、同步
-* Netty
+
+# NIO/Netty 常用库
+
+* Netty 使用linux的epoll()接口，实现异步io模型
 * Disruptor
+  1、环形数组结构，CPU缓存友好，减少GC
+  2、使用CAS和内存屏障
+  3、缓存行填充 避免false sharing
+  4、批处理
+  5、内存预分配
+  6、顺序读写
+  7、Event
 
-# SpringIOC
+* SpringIOC
+    * ApplicationContext BeanFactory
+        * BeanPostProcessor
+        * InitializingBean 初始化
+        * DisposableBean
+        * @PostConstruct
+        * @PreDestroy
+    * filter-interpreter-aop
 
-* ApplicationContext BeanFactory
+* Tools
+    * Hutool
+    * Google Guava
 
-## 生态工具
+* Load Balance
+    * Nginx
+    * Spring Cloud Gateway
 
-# 工具库
+* 分布式配置中心/注册中心
+    * Apollo
+    * Nacos
+    * Zookeeper
+    * Consul
 
-- Hutool
-- Google Guava
+* Distribution
+    * Netty/gRPC
+    * Dubbo
+    * Sentinel
+    * Hystrix
+    * Spring Cloud Alibaba
 
-## 负载均衡
+* Task
+    * XXL-JOB
+    * Elastic-Job
 
-- Nginx
-- Spring Cloud Gateway
+* Cache
+    * Redis
+    * Memcached
 
-## 分布式配置中心/注册中心
+* JDBC
+    * HikariCP
+    * Druid
+    * Sharding-Sphere
+* Seata
+    * 2PC
+    * TCC-Transaction
 
-- Apollo
-- Nacos
-- Zookeeper
-- Consul
+* Database
+    * MariaDB
+    * PostgreSQL
+    * TiDB
+    * ClickHouse
+    * Elasticsearch
 
-## 服务调用
+* Message Event
+    * Kafka
+    * RocketMQ
+    * RabbitMQ
 
-- Netty/gRPC
-- Dubbo
-- Sentinel
-- Hystrix
-- Spring Cloud Alibaba
+* 监控平台
+    * Prometheus/Grafana
+    * Zabbix
+    * Apache HertzBeat
 
-## 任务调度
+* 分布式链路追踪
+    * Pinpoint
+    * Zipkin
+    * Sky-walking
 
-- XXL-JOB
-- Elastic-Job
-
-## 缓存中间件
-
-- Redis
-- Memcached
-
-## 数据库连接池/分布式事务
-
-- HikariCP
-- Druid
-- Seata
-- TCC-Transaction
-
-## 数据库中间件
-
-- Sharding-Sphere
-
-## 数据库
-
-- MariaDB
-- PostgreSQL
-- TiDB
-- ClickHouse：
-
-## 搜索中间件
-
-- Lucene：
-- Solr
-- Elasticsearch
-
-## 消息中间件
-
-- Kafka
-- RocketMQ
-- RabbitMQ
-
-## 分布式预警监控
-
-- Grafana
-- Zabbix
-- Spring Boot Admin
-- Prometheus
-
-## 分布式链路追踪
-
-- Pinpoint
-- Zipkin
-- Sky-walking
-
-## 安全&授权
-
-- Shiro
-- Spring Security
-- OAuth 2.0
-- JWT
+* 安全&授权
+    * OAuth 2.0/JWT
+    * Shiro
+    * Sa-Token/keycloak
 
 # 参考
 
