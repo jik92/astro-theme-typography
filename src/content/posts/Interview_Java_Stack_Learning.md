@@ -16,15 +16,17 @@ description: ''
 
 # JUC
 
-* volatile 解决ACID问题
+* volatile
     * 保证可见性
     * 禁止指令重排序（happen-befored）
+
 * synchronized
     * 对象头 Mark World：HashCode、分代年龄、锁标志位信息；Klass Point 存储对象所映射的实列
     * 字节码中的表述是 monitorrecord monitorexit
     * 锁膨胀 无锁-偏向锁-轻量锁（自旋锁）-重锁
-    * 内存模型 happens-before 、double check lock
+    * 内存模型 happens-before
 
+* volatile 和 synchronized 解决ACID问题，double check lock
 * 基础工具
     * AbstractQueuedSynchronizer
     * ReentrantLock
