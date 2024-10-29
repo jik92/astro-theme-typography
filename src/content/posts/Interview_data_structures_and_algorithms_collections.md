@@ -97,4 +97,16 @@ Tree、Array、List、 、Hash、图
 
 ### 权重随机数
 
-https://zhuanlan.zhihu.com/p/534645684
+* 随机算法
+* 权重随机
+* 权重保底随机
+* [PRD保底概率实现](https://zhuanlan.zhihu.com/p/534645684)
+* [马尔科夫链](https://zhuanlan.zhihu.com/p/440962025)
+
+## 常用算法
+
+归并排序
+
+```javascript
+
+```
