@@ -203,9 +203,15 @@ jmap -dump:format=b,file=heap.hprof `which java` core.100
     * Zookeeper
     * Consul
 
+![img.png](../../assets/dubbo.png)
+
 * Distribution
     * Netty/gRPC
     * Dubbo
+        * Registry
+        * Provider/Container
+        * Consumer
+        * Monitor
     * Sentinel
     * Hystrix
     * Resilience4j
