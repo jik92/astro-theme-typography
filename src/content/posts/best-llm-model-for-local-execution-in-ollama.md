@@ -5,6 +5,8 @@ categories: [ 'LLM' ]
 description: ''
 ---
 
+目前AI已知缺点： 1、幻听，会出现隐私数据。2、胡说，捏造故事。3、道德问题
+
 # 应用层
 
 ## 基于Agent RAG 的 Search工具
