@@ -32,6 +32,7 @@ Tree、Array、List、 、Hash、图
         * 多路复用技术的Epoll，其核心结构是红黑树 + 双向链表。
     * 哈夫曼树
     * B树 B+树
+        * B+树方便range搜索，自平衡
     * 二叉堆
     * BST（Binary Search Tree）
     * Tier 树
