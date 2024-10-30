@@ -17,6 +17,33 @@ https://clickhouse.com/docs/zh/getting-started/install
 * 支持向量查询
 * 支持近似值计算
 
+```sql
+CREATE TABLE [IF NOT EXISTS] [db_name.]table_name(
+    name1 type [DEFAULT|MATERIALIZED|ALIAS expr],
+    name2 type [DEFAULT|MATERIALIZED|ALIAS expr],
+    ......
+) ENGINE = MergeTree()
+# 分区，比如时间分区
+[PARTITION BY expr]
+# 排序 
+ORDER BY expr
+# 主键生成一级索引
+[PRIMARY KEY expr]
+[SAMPLE BY expr]
+[SETTINGS name1=value1, name2=value2, ......]
+```
+
+# 概念
+
+* MergeTree 主键索引、数据分区、数据副本和数据采样等基本能力
+    * ReplacingMergeTree 具有删除重复数据的特性
+    * SummingMergeTree 按照排序键自动聚合数据
+    * Aggregating
+    * Collapsing
+    * VersionedCollapsing
+    * Graphite
+* Replicated* 支持数据副本
+
 # 性能优化
 
 * 补充 “[跳数索引](https://clickhouse.com/docs/zh/guides/improving-query-performance/skipping-indexes)
