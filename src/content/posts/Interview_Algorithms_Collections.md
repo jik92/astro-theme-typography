@@ -23,7 +23,6 @@ Tree、Array、List、 、Hash、图
     * 二叉排序树
     * 满二叉树
     * 完全二叉树
-    * 平衡二叉树
     * 遍历二叉树和线索二叉树
         * traversing binary tree 巡访树中每个结点，使得每个结点均被访问一次，且仅被访问一次
         * threaded binary Tree 二叉树以某种次序遍历使其变为线索二叉树的过程叫做线索化
