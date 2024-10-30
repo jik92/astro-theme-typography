@@ -26,6 +26,10 @@ Tree、Array、List、 、Hash、图
     * 平衡二叉树
     * AVL（二叉搜索树）
     * 红黑树（二叉搜索树）
+        * JDK 1.8开始，HashMap也引入了红黑树：当冲突的链表长度超过8时，自动转为红黑树
+        * Java中，TreeMap、TreeSet都使用红黑树作为底层数据结构
+        * Linux底层的CFS进程调度算法中，vruntime使用红黑树进行存储。
+        * 多路复用技术的Epoll，其核心结构是红黑树 + 双向链表。
     * 哈夫曼树
     * B树 B+树
     * 二叉堆
