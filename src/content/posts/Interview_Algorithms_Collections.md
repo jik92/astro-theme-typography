@@ -75,7 +75,8 @@ Tree、Array、List、 、Hash、图
 * 双精度计算
 * FooldFill 扫雷、消除、自动魔棒
 * 排序问题
-  信封嵌套问题
+![img.png](../../assets/sort.png)
+* 信封嵌套问题
 
 ### 分布式 CAP/BASE 算法
 
