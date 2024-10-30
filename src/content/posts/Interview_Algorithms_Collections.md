@@ -42,7 +42,7 @@ Tree、Array、List、 、Hash、图
                 * 从任意节点到每个叶子素有路径，都包含相同黑色节点
             * 操作 变色、左旋、右旋
     * 哈夫曼树
-    * B树 B+树
+    * B树 [B+树](https://ivanzz1001.github.io/records/post/data-structure/2018/06/16/ds-bplustree)
         * B+树方便range搜索，自平衡
     * 二叉堆 优先队列
     * Tier 树
