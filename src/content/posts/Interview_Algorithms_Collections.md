@@ -34,7 +34,7 @@ Tree、Array、List、 、Hash、图
     * B树 B+树
         * B+树方便range搜索，自平衡
     * 二叉堆
-    * BST（Binary Search Tree）
+    * BST（Binary Search Tree） 从左到右是从小到大
     * Tier 树
     * DFS、BFS
     * Dijkstra
