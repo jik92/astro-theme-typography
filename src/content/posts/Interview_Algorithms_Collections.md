@@ -75,7 +75,7 @@ Tree、Array、List、 、Hash、图
 * 双精度计算
 * FooldFill 扫雷、消除、自动魔棒
 * 排序问题
-![img.png](../../assets/sort.png)
+  ![img.png](../../assets/sort.png)
 * 信封嵌套问题
 
 ### 分布式 CAP/BASE 算法
@@ -149,50 +149,50 @@ function merge(left, right) {
 
 ```javascript
 function solveNQueens(n) {
-    const results = [];
-    const board = Array.from({length: n}, () => new Array(n).fill('.'));
+  const results = [];
+  const board = Array.from({length: n}, () => new Array(n).fill('.'));
 
-    function placeQueen(row, queens) {
-        if (row === n) {
-            const result = [];
-            queens.forEach((queen, index) => {
-                const solution = board.map((row, i) => row.map(cell => cell === 'Q' ? 'Q' : '.'));
-                solution[queen][index] = 'Q';
-                result.push(solution.map(row => row.join('')).join('\n'));
-            });
-            results.push(...result);
-            return;
-        }
-
-        for (let col = 0; col < n; col++) {
-            if (isSafe(row, col, queens)) {
-                board[row][col] = 'Q';
-                placeQueen(row + 1, queens.concat(col));
-                board[row][col] = '.';
-            }
-        }
+  function placeQueen(row, queens) {
+    if (row === n) {
+      const result = [];
+      queens.forEach((queen, index) => {
+        const solution = board.map((row, i) => row.map(cell => cell === 'Q' ? 'Q' : '.'));
+        solution[queen][index] = 'Q';
+        result.push(solution.map(row => row.join('')).join('\n'));
+      });
+      results.push(...result);
+      return;
     }
 
-    function isSafe(row, col, queens) {
-        for (let i = 0; i < row; i++) {
-            if (board[i][col] === 'Q' || queens.includes(i * n + col)) {
-                return false;
-            }
-        }
-        let left = col - 1, right = col + 1, i = row - 1;
-        while (i >= 0 && left >= 0) {
-            if (board[i][left--] === 'Q') return false;
-            i--;
-        }
-        while (i >= 0 && right < n) {
-            if (board[i][right++] === 'Q') return false;
-            i--;
-        }
-        return true;
+    for (let col = 0; col < n; col++) {
+      if (isSafe(row, col, queens)) {
+        board[row][col] = 'Q';
+        placeQueen(row + 1, queens.concat(col));
+        board[row][col] = '.';
+      }
     }
+  }
 
-    placeQueen(0, []);
-    return results;
+  function isSafe(row, col, queens) {
+    for (let i = 0; i < row; i++) {
+      if (board[i][col] === 'Q' || queens.includes(i * n + col)) {
+        return false;
+      }
+    }
+    let left = col - 1, right = col + 1, i = row - 1;
+    while (i >= 0 && left >= 0) {
+      if (board[i][left--] === 'Q') return false;
+      i--;
+    }
+    while (i >= 0 && right < n) {
+      if (board[i][right++] === 'Q') return false;
+      i--;
+    }
+    return true;
+  }
+
+  placeQueen(0, []);
+  return results;
 }
 ```
 
@@ -230,10 +230,8 @@ function lcs(str1, str2) {
     function lcsHelper(i, j) {
         const key = `${i},${j}`;
 
-        // 基础情况
         if (i === 0 || j === 0) return 0;
 
-        // 检查是否已经计算过
         if (memo.has(key)) return memo.get(key);
 
         let result;
