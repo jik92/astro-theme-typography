@@ -24,7 +24,9 @@ Tree、Array、List、 、Hash、图
     * 满二叉树
     * 完全二叉树
     * 平衡二叉树
+    * BST（Binary Search Tree） 从左到右是从小到大，可能退化为链表
     * AVL（二叉搜索树）
+        * 任何两个子树的最大差别为1，添加和删除需要多次旋转来自平衡
     * 红黑树（二叉搜索树）
         * JDK 1.8开始，HashMap也引入了红黑树：当冲突的链表长度超过8时，自动转为红黑树
         * Java中，TreeMap、TreeSet都使用红黑树作为底层数据结构
@@ -33,8 +35,7 @@ Tree、Array、List、 、Hash、图
     * 哈夫曼树
     * B树 B+树
         * B+树方便range搜索，自平衡
-    * 二叉堆
-    * BST（Binary Search Tree） 从左到右是从小到大
+    * 二叉堆 优先队列
     * Tier 树
     * DFS、BFS
     * Dijkstra
