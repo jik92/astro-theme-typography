@@ -73,7 +73,7 @@ https://github.com/datawhalechina/fun-rec/tree/master
 ### 基础架构
 
 * 离线层 数据处理、数据存储、特征工程、离线特征计算、离线模型训练、输出Redis/Hive/RDBMS
-* 近线层 Kafka/Flume数据源-> Spark/Flink/Doris->Redis/HDFS/ES
+* 近线层 Kafka/Flume数据源-> Spark/Flink/Doris/Clickhouse-> Redis/HDFS/ES
 * 在线层 UI
 
 ### 推荐系统四个阶段
