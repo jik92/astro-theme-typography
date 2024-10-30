@@ -14,6 +14,26 @@ description: ''
 
 # Java 新特性
 
+* lambda 表达式
+* Functional Programming / Method References `names.stream().map(String::toUpperCase).forEach(System.out::println);`
+* Optional `Optional.ofNullable(name); optional.isPresent()`
+* Stream API `filtering、mapping、reducing`
+* Java Platform Module System
+
+```java
+module my.module {
+    exports my.packages;
+    requires java.logging;
+}
+```
+
+* var/varargs
+* Text Blocks 模板字符串
+* record
+* Sealed Classes
+* Foreign Function & Memory API
+* vector 向量API
+
 # JUC
 
 * volatile
