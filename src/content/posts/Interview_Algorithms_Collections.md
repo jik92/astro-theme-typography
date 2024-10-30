@@ -109,7 +109,13 @@ Tree、Array、List、 、Hash、图
 
 ### 未分类算法
 
+![img.png](../../assets/b.png)
+
 * MySQL的 B+ 树
+    * B+树的磁盘读写代价更低
+    * B+树的查询效率更加稳定
+    * B+树更有利对数据的扫描
+
 * Redis、Dubbo的负载均衡 一致性hash
     * 2^32 上生成一个环、设置服务器的hash以及位置、目标key通过hashcode查找目标key顺时针最近的服务器节点
     * Redis默认的HASH一致性算法 KETAMA_HASH
