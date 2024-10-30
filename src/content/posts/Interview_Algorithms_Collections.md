@@ -26,7 +26,7 @@ Tree、Array、List、 、Hash、图
     * 平衡二叉树
     * 遍历二叉树和线索二叉树
         * traversing binary tree 巡访树中每个结点，使得每个结点均被访问一次，且仅被访问一次
-        * threaded binary Tree
+        * threaded binary Tree 二叉树以某种次序遍历使其变为线索二叉树的过程叫做线索化
     * BST（Binary Search Tree） 从左到右是从小到大，可能退化为链表
         * [AVL](https://www.cnblogs.com/crazymakercircle/p/16320430.html)（二叉搜索树）任何两个子树的最大差别为1，添加和删除需要多次旋转来自平衡
             * LL/RR/LR/RL 失衡旋转， 旋转要点pivot支点提升为root节点
