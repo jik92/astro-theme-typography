@@ -34,7 +34,7 @@ Tree、Array、List、 、Hash、图
                 * Java中，TreeMap、TreeSet都使用红黑树作为底层数据结构
                 * Linux底层的CFS进程调度算法中，vruntime使用红黑树进行存储。
                 * 多路复用技术的Epoll，其核心结构是红黑树 + 双向链表。
-            * 特征
+            * 特征 黑色完美平衡
                 * 非黑即红
                 * 根节点黑色
                 * 叶子节点（NIL）一定是黑色
