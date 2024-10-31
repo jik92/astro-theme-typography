@@ -5,6 +5,12 @@ categories: [ '面试' ,'db' ]
 description: ''
 ---
 
+* MYSQL 通过 redo、undo 日志实现 WAL
+
+```
+  mysql 的 WAL，大家可能都比较熟悉。mysql 通过 redo、undo 日志实现 WAL。redo log 称为重做日志，每当有操作时，在数据变更之前将操作写入 redo log，这样当发生掉电之类的情况时系统可以在重启后继续操作。undo log 称为撤销日志，当一些变更执行到一半无法完成时，可以根据撤销日志恢复到变更之间的状态。mysql 中用 redo log 来在系统 Crash 重启之类的情况时修复数据（事务的持久性），而 undo log 来保证事务的原子性。
+```
+
 # MySQL 数据结构
 
 * 表空间由段（segment）、区（extent）、页（page）、行（row）组成。
