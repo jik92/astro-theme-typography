@@ -62,6 +62,7 @@ while (true){
         * ZSCORE user:xiaolin:ranking arcticle:4；查看某赞数
         * ZREVRANGE user:xiaolin:ranking 0 2 WITHSCORES；获取赞数最多的文章
         * ZRANGEBYSCORE user:xiaolin:ranking 100 200 WITHSCORES；获取100-200赞文章
+        * ZREVRANK 获取指定人的排名
     * 电话排序
         * ZADD phone 0 13100111100 0 13110114300 0 13132110901
         * ZRANGEBYLEX phone - +
