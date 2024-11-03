@@ -147,6 +147,12 @@ Tree、Array、List、 、Hash、图
 * HNSW（Hierarchical Navigable Small Word）算法算是目前推荐领域里面常用的搜索 ANN（Approximate Nearest Neighbor）算法了。
 * LLM 模型解决 NLP 相似性问题
 
+#### 生成数据结构的模型
+
+* 基于图
+* 基于哈希
+* 基于数据
+
 #### 生成类模型
 
 * GAN(Generative Adversarial Networks) 生成对抗网络GAN,
