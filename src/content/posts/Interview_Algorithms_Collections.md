@@ -147,11 +147,21 @@ Tree、Array、List、 、Hash、图
 * HNSW（Hierarchical Navigable Small Word）算法算是目前推荐领域里面常用的搜索 ANN（Approximate Nearest Neighbor）算法了。
 * LLM 模型解决 NLP 相似性问题
 
+#### 常见库
+
+* Scikit-learn：它的NearestNeighbors类提供了一个简单的接口，可以使用LSH等技术进行精确和近似的最近邻搜索。
+* Hnswlib：它是HNSW的Python包装器。
+* FAISS：该库支持多种ANN算法，包括HNSW, IVFADC(带ADC量化的倒置文件)和IVFPQ(带产品量化的倒置文件)。
+* Annoy (Approximate Nearest Neighbors Oh Yeah)：Annoy是一个c++库，也提供了Python接口。
+* NMSLIB(非度量空间库)：它是用c++编写的，并具有Python包装器。它可以执行HNSW、LSH、MIH或随机投影树等算法。
+
+原文链接：https://blog.csdn.net/raoxiaoya/article/details/143185527
+
 #### 生成数据结构的模型
 
-* 基于图
-* 基于哈希
-* 基于数据
+* 基于图 HNSW
+* 基于哈希 LSH、MIH
+* 基于树 kd树、球树、RP树
 
 #### 生成类模型
 
