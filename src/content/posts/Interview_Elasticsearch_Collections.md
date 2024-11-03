@@ -42,6 +42,31 @@ description: ''
 * 优先用keyword
 * 查询具体date ，避免使用now，会绕过缓存
 
+## 向量搜索
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html
+
+#POST image-index/_search
+
+```json
+{
+  "knn": {
+    "field": "image-vector",
+    "query_vector": [
+      -5,
+      9,
+      -12
+    ],
+    "k": 10,
+    "num_candidates": 100
+  },
+  "fields": [
+    "title",
+    "file-type"
+  ]
+}
+```
+
 # 以下就文檔堆叠
 
 简介
