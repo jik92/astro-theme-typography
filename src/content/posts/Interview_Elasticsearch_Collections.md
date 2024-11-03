@@ -47,7 +47,7 @@ description: ''
 ### KNN 搜索
 
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html
-  精确的强力 kNN 可保证结果准确，但对于大型数据集来说扩展性不佳。
+  精确的强力 kNN 可保证结果准确，但对于大型数据集来说扩展性不佳。Image Search、視頻指紋採樣、Face Service、語音辨識和商品推薦
 
 #POST image-index/_search
 
