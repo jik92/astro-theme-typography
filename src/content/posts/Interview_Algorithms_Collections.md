@@ -144,6 +144,14 @@ Tree、Array、List、 、Hash、图
 * HNSW（Hierarchical Navigable Small Word）算法算是目前推荐领域里面常用的搜索 ANN（Approximate Nearest Neighbor）算法了。
 * K-最近邻算法（KNN） 图像分类、 文本分类、 推荐系统、 数据挖掘、 生物信息学、 财务分析
 
+#### 生成类模型
+
+* GAN(Generative Adversarial Networks) 生成对抗网络GAN,
+  生成器（Generator）和判别器（Discriminator）。这两个组件在训练过程中相互对抗，共同提升，最终目标是使生成器能够生成与真实数据难以区分的新数据
+* 变分自编码器（VAE）
+* 自回归模型（如 PixelRNN、PixelCNN）
+* 流模型（如 Glow、RealNVP）
+
 #### 判别类模型
 
 判别类模型主要关注于从输入数据中提取特征，并基于这些特征进行分类、回归或其他预测任务.学习数据的决策边界或条件概率分布,
@@ -153,8 +161,6 @@ Tree、Array、List、 、Hash、图
     * DNN（Deep）深度神经网络,几乎可以拟合任何函数，所以DNN的非线性拟合能力非常强
     * RNN(Recurrent) 处理序列数据的神经网络，处理语音识别、语言模型、机器翻译、股票、以及时序分析等NLP领域问题有所突破。
     * CNN(Convolutional)卷积神经网络,模仿生物神经网络。图像识别领域
-    * GAN(Generative Adversarial Networks) 生成对抗网络GAN,
-      生成器（Generator）和判别器（Discriminator）。这两个组件在训练过程中相互对抗，共同提升，最终目标是使生成器能够生成与真实数据难以区分的新数据
     * 决策树、支持向量机（SVM）
 
 ### 权重随机数
