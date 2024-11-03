@@ -149,7 +149,7 @@ https://ann-benchmarks.com/
 * HNSW（Hierarchical Navigable Small Word）算法算是目前推荐领域里面常用的搜索 ANN（Approximate Nearest Neighbor）算法了。
 * LLM 模型解决 NLP 相似性问题
 
-#### 常见库
+##### 常见库
 
 * Scikit-learn：它的NearestNeighbors类提供了一个简单的接口，可以使用LSH等技术进行精确和近似的最近邻搜索。
 * Hnswlib：它是HNSW的Python包装器。
@@ -159,21 +159,13 @@ https://ann-benchmarks.com/
 
 原文链接：https://blog.csdn.net/raoxiaoya/article/details/143185527
 
-#### 生成数据结构的模型
+##### 生成数据结构的模型
 
 * 基于图 HNSW
 * 基于哈希 LSH、MIH
 * 基于树 kd树、球树、RP树
 
-#### 生成类模型
-
-* GAN(Generative Adversarial Networks) 生成对抗网络GAN,
-  生成器（Generator）和判别器（Discriminator）。这两个组件在训练过程中相互对抗，共同提升，最终目标是使生成器能够生成与真实数据难以区分的新数据
-* 变分自编码器（VAE）
-* 自回归模型（如 PixelRNN、PixelCNN）
-* 流模型（如 Glow、RealNVP）
-
-#### 判别类模型
+#### 判别类算法
 
 判别类模型主要关注于从输入数据中提取特征，并基于这些特征进行分类、回归或其他预测任务.学习数据的决策边界或条件概率分布,
 通常不需要生成新的数据样本。
@@ -183,6 +175,14 @@ https://ann-benchmarks.com/
     * RNN(Recurrent) 处理序列数据的神经网络，处理语音识别、语言模型、机器翻译、股票、以及时序分析等NLP领域问题有所突破。
     * CNN(Convolutional)卷积神经网络,模仿生物神经网络。图像识别领域
     * 决策树、支持向量机（SVM）
+
+#### 生成类算法
+
+* GAN(Generative Adversarial Networks) 生成对抗网络GAN,
+  生成器（Generator）和判别器（Discriminator）。这两个组件在训练过程中相互对抗，共同提升，最终目标是使生成器能够生成与真实数据难以区分的新数据
+* 变分自编码器（VAE）
+* 自回归模型（如 PixelRNN、PixelCNN）
+* 流模型（如 Glow、RealNVP）
 
 ### 权重随机数
 
