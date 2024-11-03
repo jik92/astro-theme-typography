@@ -143,6 +143,8 @@ Tree、Array、List、 、Hash、图
 
 #### 搜索算法
 
+https://ann-benchmarks.com/
+
 * K-最近邻算法（KNN） 图像分类、 文本分类、 推荐系统、 数据挖掘、 生物信息学、 财务分析
 * HNSW（Hierarchical Navigable Small Word）算法算是目前推荐领域里面常用的搜索 ANN（Approximate Nearest Neighbor）算法了。
 * LLM 模型解决 NLP 相似性问题
