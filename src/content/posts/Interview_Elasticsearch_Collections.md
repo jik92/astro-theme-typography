@@ -44,6 +44,12 @@ description: ''
 
 ## 向量搜索
 
+### ReRankFusion
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html
+  就是一个综合排序算法，正常情况下，你需要给每一个字段设置权重，然后根据权重来计算综合排名，但是如果你不想设置权重，还想有一个排序，那么RRF就是一个凑合的算法，比如字段A按照一个规则排序，字段B按照另一个规则排序，那么每一条记录的综合得分就是这两个字段的排名的倒数相加。即score =
+  1 / f1_rank + 1 / f2_rank。然后再按照 score 排序。
+
 ### KNN 搜索
 
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html
@@ -70,20 +76,14 @@ description: ''
 }
 ```
 
-### ReRank
-
-* https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html
-  就是一个综合排序算法，正常情况下，你需要给每一个字段设置权重，然后根据权重来计算综合排名，但是如果你不想设置权重，还想有一个排序，那么RRF就是一个凑合的算法，比如字段A按照一个规则排序，字段B按照另一个规则排序，那么每一条记录的综合得分就是这两个字段的排名的倒数相加。即score =
-  1 / f1_rank + 1 / f2_rank。然后再按照 score 排序。
-
-### 语义检索
-
-* LLM
-
 ### HNSW(重要)
 
 * 虽然ES使用的是kNN（ANN），然而，在高维空间中，过去的实验表明ANN并不比KNN节省多少时间，但是至少要有一个类似于Mysql
   B+树那样的索引结构以加速检索。ES采用的是HNSW（分层导航小世界算法），HNSW是有能力在几毫秒内从数百万个数据点中找到最近邻的。
+
+### 语义检索
+
+* LLM
 
 # 以下就文檔堆叠
 
